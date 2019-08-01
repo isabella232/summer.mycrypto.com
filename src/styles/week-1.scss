@@ -1,0 +1,233 @@
+body.week__1 {
+  background-color: $sand;
+  background-image: url('./../assets/week__bg--1.svg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  width: 100%;
+  background-position: center top;
+  padding: 0 $space-sm $space-sm;
+}
+
+.week__header {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.week__filler--1,
+.week__logo--1 {
+  flex: 1;
+  margin: 0;
+  width: 11rem;
+  min-width: 11rem;
+  max-width: 11rem;
+  height: auto;
+  display: flex;
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+.week__progress--1 {
+  flex: 10;
+  display: flex;
+}
+.week__inner-wrapper {
+  background: white;
+  border: 0.3rem solid #fccb56;
+  display: flex;
+  flex-direction: column;
+  margin: $space auto;
+  max-width: 43rem;
+  min-height: 65vh;
+  padding: 3rem $space $space-sm;
+  position: relative;
+}
+
+.week__inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.week__title {
+  position: absolute;
+  margin-top: -5rem;
+  left: 49%; // bc dropshadow
+  transform: translateX(-50%);
+}
+
+.week__1 .character__wrapper {
+  pointer-events: none;
+  @include bp(screen-sm-min) {
+    position: fixed;
+    top: 50%;
+    left: 0;
+  }
+}
+
+.guide__wrapper {
+  width: 20rem;
+  height: auto;
+  position: fixed;
+  right: $space-sm;
+  bottom: $space-sm;
+  pointer-events: none;
+}
+
+.shell__wrapper {
+  width: 5rem;
+  height: auto;
+  position: absolute;
+  left: -2.3rem;
+  bottom: -1.5rem;
+  pointer-events: none;
+}
+
+.week-controls__wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: $space;
+}
+
+.week__item-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.week__item {
+  padding: 0.25rem;
+  width: 33.33%;
+  &:first-child {
+    margin-left: -($space-sm);
+  }
+  &:last-child {
+    margin-right: -($space-sm);
+  }
+}
+
+.week__item-img {
+  width: 85%;
+  height: auto;
+  border-radius: 100%;
+  padding: 7%;
+  background: white;
+  margin-bottom: 1rem;
+  border: 3px solid white;
+  transition: all ease 100ms;
+  cursor: pointer;
+}
+
+.week__item:hover .week__item-img,
+.state--highlighted .week__item-img {
+  border: 3px solid #ebb640;
+  box-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.37);
+  transition: all ease 100ms;
+}
+
+.week__text {
+  display: none;
+}
+.week__text[data-state='selected'] {
+  display: block;
+}
+
+.week__1 {
+  .ab__complete--1 {
+    display: block;
+  }
+  .ab__complete--2,
+  .ab__complete--3,
+  .ab__complete--4 {
+    display: none;
+  }
+}
+
+.week-controls__wrapper {
+  font-weight: 500;
+  color: $blue;
+  letter-spacing: 0.1px;
+  text-align: center;
+  line-height: 1;
+}
+
+.week-controls__prev {
+  transition: all ease 100ms;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.03);
+    transition: all ease 100ms;
+  }
+}
+
+.week-controls__next {
+  transition: all ease 100ms;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.03);
+    transition: all ease 100ms;
+  }
+}
+
+.week__dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 100%;
+  border: 2.5px solid $blue;
+  background-color: white;
+  display: inline-block;
+  margin: 0.25rem;
+  cursor: pointer;
+  transition: all ease 100ms;
+}
+
+.week__dot[data-state='selected'],
+.week__dot:hover {
+  background-color: $blue;
+  transition: all ease 100ms;
+}
+
+.week__item-name {
+  font-size: $font-size-xs;
+  color: $blue;
+  letter-spacing: 0.01rem;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.week__button {
+  background-image: linear-gradient(0deg, #ffd166 11%, #fef4dc 88%);
+  border-radius: 0.1rem;
+  border: 0.25rem solid #dda62c;
+  box-shadow: 0 2px 4px 0 rgba(2, 3, 5, 0.37);
+  color: #163150;
+  display: block;
+  font-size: $font-size-xs;
+  padding: 0.9rem 0.5rem;
+  transition: all ease 100ms;
+}
+
+.week__button:hover {
+  background-image: linear-gradient(0deg, #057a97 11%, #00aed9 88%);
+  box-shadow: 0 2px 4px 0 rgba(2, 3, 5, 0.37);
+  color: white;
+  transition: all ease 100ms;
+  text-decoration: none;
+}
+
+.modal {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity ease 100ms;
+}
+
+.modal.open {
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity ease 100ms;
+}

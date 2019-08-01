@@ -1,0 +1,86 @@
+.modal {
+  align-items: center;
+  background: rgba(#163150, 0.6);
+  bottom: 0;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  overflow: scroll;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+.modal__wrapper {
+  //background-image: url('./../assets/success-bg.svg');
+  background: white;
+  border: 0.3rem solid #fccb56;
+  padding: 5vw 9vw;
+  position: relative;
+}
+.modal__close {
+  position: absolute;
+  right: $space-sm;
+  top: $space-sm;
+  transition: all ease 100ms;
+  cursor: pointer;
+  &:hover {
+    transition: all ease 100ms;
+    transform: scale(1.1);
+  }
+}
+.modal__inner {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+  max-width: 29rem;
+  text-align: center;
+}
+.modal__title {
+  color: $blue;
+  font-size: $font-size-sm;
+  margin-bottom: 0.25em;
+}
+.modal__text {
+  color: $blue;
+  letter-spacing: 0.11px;
+  margin-bottom: 0;
+}
+.modal__item {
+  background: #ffffff;
+  border-radius: 100%;
+  border: 1px solid #029ac0;
+  box-shadow: 0 2px 4px 0 rgba(2, 3, 5, 0.37);
+  height: 10rem;
+  margin: 1.5rem auto;
+  width: 10rem;
+}
+.modal__cta {
+  color: $blue;
+  font-weight: 600;
+  letter-spacing: 0.11px;
+}
+.modal__button {
+  background: $blue;
+  box-shadow: 0 2px 4px 0 rgba(2, 3, 5, 0.37);
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-weight: 500;
+  margin-top: $space-sm;
+  padding: $space-sm $space;
+  transition: all ease 100ms;
+  white-space: nowrap;
+  &:hover {
+    text-decoration: none;
+    color: white;
+    transform: scale(1.03);
+    transition: all ease 100ms;
+  }
+}
+.modal__button-icon {
+  margin-right: $space-xs;
+}

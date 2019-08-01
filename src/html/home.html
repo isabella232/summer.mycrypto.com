@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MyCryptoSummer</title>
+  <meta property="og:title" content="MyCryptoSummer" />
+  <meta name="twitter:title" content="#MyCryptoSummer">
+  <meta name="description" content="Learn more about blockchain and cryptocurrency in a fun, digestible manner! Brought to you by MyCrypto and Brave." />
+  <meta property="og:description" content="Learn more about blockchain and cryptocurrency in a fun, digestible manner! Brought to you by MyCrypto and Brave." />
+  <meta name="twitter:description" content="Learn more about blockchain and cryptocurrency in a fun, digestible manner! Brought to you by MyCrypto and Brave.">
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://summer.mycrypto.com/" />
+  <meta name="theme-color" content="#057a97">
+  <meta name="msapplication-navbutton-color" content="#057a97">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@MyCrypto">
+  <meta name="twitter:image" content="<%= require('../assets/mycryptosummer-og.jpg') %>">
+  <meta property="og:image" content="<%= require('../assets/mycryptosummer-og.jpg') %>" />
+</head>
+
+<body class="home">
+
+
+  <main class="hero">
+
+    <img class="mycryptosummer__logo" width="192" height="66" src="<%= require('../assets/mycryptosummer__logo.svg') %>" alt="MyCryptoSummer Logo">
+
+    <section class="hero__wrapper">
+
+      <section class="hero__left">
+        <h1 class="hero__title">MyCrypto Summer</h1>
+        <p class="hero__title--mobile">Welcome to MyCryptoSummer!</p>
+        <div class="hero__text">
+          <p>
+            <span class="u--hide-sm">Welcome to MyCryptoSummer! </span>Throughout the month of August, we want to help you learn more about blockchain and cryptocurrency - but in a fun, digestible manner.
+          </p>
+          <p>
+            <strong>How does it work?</strong> It’s simple: Each week, a new portion of the adventure unlocks. Experience the story, choose your path, and at the end of the month, you'll have a fully equipped adventurer!
+          </p>
+          <p>
+            Make sure to share your progress each week on Twitter using <a href="https://twitter.com/search?q=%23MyCryptoSummer" target="_blank" rel="noopener noreferrer">#MyCryptoSummer</a> - you’ll be entered to win prizes! For full details, visit <a href="https://medium.com/@MyCrypto/f967b93be57" target="_blank" rel="noopener noreferrer">the announcement post</a>.
+          </p>
+        </div>
+
+        <h5 class="partner__title">In Partnership With</h5>
+
+        <a class="partner__link" href="https://brave.com/myc770" target="_blank" rel="noopener noreferrer">
+          <img class="partner__logo" width="192" height="58" src="<%= require('../assets/brave__logo.svg') %>" alt="Brave Logo">
+        </a>
+      </section>
+
+      <section class="hero__right">
+        <div class="secret-treasure__wrapper">
+          <img class="secret-treasure--unavailable" width="188" height="109" src="<%= require('../assets/treasure--gray.svg') %>">
+
+          <aside class="secret-treasure__tooltip">
+            <a href="https://brave.com/myc770" target="_blank" rel="noopener noreferrer">
+              Click me while using the Brave Browser to receive a bonus item!
+            </a>
+          </aside>
+          <img class="secret-treasure--available" data-action="claim-treasure" width="188" height="109" src="<%= require('../assets/treasure--color.svg') %>">
+
+          <aside class="secret-treasure__tooltip" data-action="claim-treasure">
+            <a href="#claimed" data-action="claim-treasure">
+              Click to claim your Brave flag!
+            </a>
+          </aside>
+
+          <img class="secret-treasure--flag" width="188" height="109" src="<%= require('../assets/secret-treasure--flag.svg') %>">
+        </div>
+
+
+        <div class="character__wrapper" data-state="female-selected">
+          <img inline src="src/assets/character.svg">
+          <div class="character-choice">
+            <img class="character-choice__text" width="183" height="47" src="<%= require('../assets/character-choice-text.svg') %>" alt="Choose your character and start your adventure!">
+            <img inline src="src/assets/character-button.svg">
+          </div>
+        </div>
+
+        <div class="adventure-bar__wrapper">
+          <img inline class="adventure-bar__base" width="750" height="97" src="src/assets/adventure-bar.svg" alt="Adventure Progress Bar">
+        </div>
+      </section>
+
+    </section>
+
+  </main>
+
+
+  <main class="map__main">
+
+    <h2 class="map__title">
+      <span class="sr-only"> Adventure Map </span>
+      <img width="320" height="33" src="<%= require('../assets/map__title.svg') %>" alt="Adventure Map">
+    </h2>
+
+    <section class="map__wrapper">
+      <img inline src="src/assets/map__main-bg.svg" alt="Adventure Map Background">
+
+      <!-- Week 1 -->
+      <article class="map__inner map--1">
+        <h3 class="map__week-title">
+          <span class="sr-only">Week 1</span>
+          <img class="map__week-title--1" src="<%= require('../assets/map__week-title--1.svg') %>" width="90" height="27" alt="Adventure Map Week 1 Title">
+        </h3>
+        <p class="map__week-text">
+          <strong>Let’s get this adventure started!</strong> You wake up at the Blockchain Beach alongside a helpful guide from The Land Of Magical Internet Money, who needs your help. Accept their quest and receive your first piece of equipment!
+        </p>
+        <p class="map__week-concepts">
+          Concepts: Blockchain, Cryptocurrency
+        </p>
+        <div class="map__week-button map__week-button--1-available">
+          <a class="sr-only" href="week-1.html">Start Your Adventure</a>
+          <a href="week-1.html">
+            <img width="156" height="54" src="<%= require('../assets/map__week-button--1-available.svg') %>" alt="Start Your Adventure">
+          </a>
+        </div>
+      </article>
+
+      <!-- Week 2 -->
+      <article class="map__inner map--2">
+        <h3 class="map__week-title">
+          <span class="sr-only">Week 2</span>
+          <img class="map__week-title--2" src="<%= require('../assets/map__week-title--2.svg') %>" width="90" height="27" alt="Adventure Map Week 2 Title">
+        </h3>
+        <p class="map__week-text map__week-text--available">
+          You’ve embarked on your journey and are now sailing the Open-Source Ocean! What encounters may lie in wait?
+        </p>
+        <p class="map__week-text map__week-text--unavailable">
+          This part of the adventure will become available during the second week of August. Come back soon!
+          <br /><br />
+        </p>
+        <p class="map__week-concepts">
+          Concepts: Wallets, Custody, Obtaining Crypto
+        </p>
+        <div class="map__week-button map__week-button--available">
+          <a href="week-2.html" class="sr-only">Continue Your Adventure</a>
+          <a href="week-2.html">
+            <img width="156" height="54" src="<%= require('../assets/map__week-button--23-available.svg') %>" alt="Continue Your Adventure">
+          </a>
+        </div>
+        <div class="map__week-button map__week-button--unavailable">
+          <span class="sr-only">Coming Soon!</span>
+          <img width="156" height="54" src="<%= require('../assets/map__week-button--23-unavailable.svg') %>" alt="Coming Soon!">
+        </div>
+      </article>
+
+      <!-- Week 3 -->
+      <article class="map__inner map--3">
+        <h3 class="map__week-title">
+          <a href="week-3.html" class="sr-only">Week 3</a>
+          <img class="map__week-title--3" src="<%= require('../assets/map__week-title--3.svg') %>" width="90" height="27" alt="Adventure Map Week 3 Title">
+        </h3>
+        <p class="map__week-text map__week-text--available">
+          TODO: Week 3 Text Goes Here
+        </p>
+        <p class="map__week-text map__week-text--unavailable">
+          This part of the adventure will become available during the third week of August. Come back soon!
+          <br /><br /><br />
+        </p>
+        <p class="map__week-concepts"></p>
+        <div class="map__week-button map__week-button--available">
+          <a href="week-3.html" class="sr-only">Continue Your Adventure</a>
+          <a href="week-3.html">
+            <img width="156" height="54" src="<%= require('../assets/map__week-button--23-available.svg') %>" alt="Continue Your Adventure">
+          </a>
+        </div>
+        <div class="map__week-button map__week-button--unavailable">
+          <span class="sr-only">Coming Soon!</span>
+          <img width="156" height="54" src="<%= require('../assets/map__week-button--23-unavailable.svg') %>" alt="Coming Soon!">
+        </div>
+      </article>
+
+      <!-- Week 4 -->
+      <article class="map__inner map--4">
+        <h3 class="map__week-title">
+          <span class="sr-only">Week 4</span>
+          <img class="map__week-title--4" src="<%= require('../assets/map__week-title--4.svg') %>" width="90" height="27" alt="Adventure Map Week 4 Title">
+        </h3>
+        <p class="map__week-text map__week-text--available">
+          TODO: Week 4 Text Goes Here
+        </p>
+        <p class="map__week-text map__week-text--unavailable">
+          This part of the adventure will become available during the last week of August. Come back soon!
+          <br /><br /><br />
+        </p>
+        <p class="map__week-concepts"></p>
+        <div class="map__week-button map__week-button--available">
+          <a href="week-4.html" class="sr-only">Complete Your Adventure</a>
+          <a href="week-4.html">
+            <img width="156" height="54" src="<%= require('../assets/map__week-button--4-available.svg') %>" alt="Continue Your Adventure">
+          </a>
+        </div>
+        <div class="map__week-button map__week-button--unavailable">
+          <span class="sr-only">Coming Soon!</span>
+          <img width="156" height="54" src="<%= require('../assets/map__week-button--4-unavailable.svg') %>" alt="Coming Soon!">
+        </div>
+      </article>
+
+    </section>
+
+  </main>
+
+  <section class="modal">
+    <div class="modal__wrapper">
+      <a href="#" class="modal__close">
+        <img class="modal__button-icon" src="<%= require('../assets/icon__close.svg') %>" width="24" height="24">
+      </a>
+      <div class="modal__inner">
+        <h3 class="modal__title">Congrats!</h3>
+        <p class="modal__text"></p>
+        <img class="modal__item" src="" width="300" height="300">
+        <p class="modal__cta">Share your progress and new item with #MyCryptoSummer to be entered to win prizes!</p>
+        <a class="modal__button" href="#" rel="noopener noreferrer" target="_blank">
+          <img class="modal__button-icon" src="<%= require('../assets/icon__twitter.svg') %>" width="24" height="24">
+          Share on Twitter
+        </a>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('./../assets/avenir-regular.woff') format('woff');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('./../assets/avenir-italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('./../assets/avenir-medium.woff') format('woff');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('./../assets/avenir-demi.woff') format('woff');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('./../assets/avenir-bold.woff') format('woff');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('./../assets/avenir-heavy.woff') format('woff');
+  font-weight: 900;
+}
+
+@mixin bp($point) {
+  @if $point == screen-sm {
+    @media (max-width: 45em) {
+      @content;
+    }
+  } @else if $point == screen-sm-min {
+    @media (min-width: 45.001em) {
+      @content;
+    }
+  } @else if $point == screen-md {
+    @media (max-width: 62em) {
+      @content;
+    }
+  } @else if $point == screen-lg {
+    @media (max-width: 82em) {
+      @content;
+    }
+  } @else if $point == screen-xs {
+    @media (max-width: 93em) {
+      @content;
+    }
+  }
+}
+
+$screen-sm: 25em;
+
+$blue: #057a97;
+$gray-md: #424242;
+$sand: #ffd165;
+$navy: #2a455f;
+
+$font-size-xl: 6.25em;
+$font-size-lg: 3em;
+$font-size-md: 2em;
+$font-size-sm: 1.5em;
+$font-size-xs: 0.9em;
+
+$space-lg: 4rem;
+$space: 2rem;
+$space-sm: 1rem;
+$space-xs: 0.5rem;
+
+.u--hide-sm {
+  @include bp(screen-sm) {
+    display: none;
+  }
+}
+
+@import 'reboot';
+@import 'hero';
+@import 'home-map';
+@import 'week-1';
+@import 'modal';

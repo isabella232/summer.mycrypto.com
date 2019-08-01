@@ -1,0 +1,25 @@
+<filter  height="150%" id="flag-shadow" width="150%" x="0" y="0">
+    <feOffset  dx="0" dy="1" in="SourceAlpha" result="offOut"></feOffset>
+    <feGaussianBlur  in="offOut" result="blurOut" stdDeviation="2"></feGaussianBlur>
+    <feBlend  in="SourceGraphic" in2="blurOut" mode="normal"></feBlend>
+    <feComponentTransfer>
+        <feFuncA  slope="0.2" type="linear"></feFuncA>
+    </feComponentTransfer>
+    <feMerge>
+        <feMergeNode></feMergeNode>
+        <feMergeNode  in="SourceGraphic"></feMergeNode>
+    </feMerge>
+</filter>
+
+
+
+
+
+
+<filter id="success-shadow" width="200%" height="200%">
+<feOffset result="offOut" in="SourceGraphic" dx="1" dy="2"></feOffset>
+<feColorMatrix result="matrixOut" in="offOut" type="matrix"
+      values="0 0.2 0 0 0 0 0.2 0 0 0 0 0.2 0 0 0 0 0.2 0 3 0" />
+<feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="4"></feGaussianBlur>
+<feBlend in="SourceGraphic" in2="blurOut" mode="normal"></feBlend>
+</filter>

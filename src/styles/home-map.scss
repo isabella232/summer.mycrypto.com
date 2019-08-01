@@ -1,0 +1,160 @@
+.map__main {
+  @include bp(screen-sm-min) {
+    padding-top: 5vw;
+  }
+  @include bp(screen-sm) {
+    padding-top: 7vw;
+    background-color: $sand;
+  }
+}
+
+.map__title {
+  width: 25vw;
+  margin: 0 auto -3vw;
+  @include bp(screen-sm) {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+
+.map__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.map__background {
+  width: 98%;
+  height: auto;
+}
+
+.map__inner {
+  @include bp(screen-sm-min) {
+    position: absolute;
+    width: 35%;
+    height: auto;
+    padding: 3rem;
+  }
+  padding: 1rem;
+  background-image: url(./../assets/map__inner-bg.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: none;
+  .map__week-text--available,
+  .map__week-button--available {
+    display: none;
+  }
+  .map__week-text--unavailable,
+  .map__week-button--unavailable {
+    display: block;
+  }
+}
+
+.map__inner.state--available {
+  .map__week-text--available,
+  .map__week-button--available {
+    display: block;
+  }
+  .map__week-text--unavailable,
+  .map__week-button--unavailable {
+    display: none;
+  }
+}
+
+.state--selected {
+  display: block;
+}
+
+.map__week-title {
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.map__week-button {
+  position: relative;
+  bottom: -1vw;
+  cursor: pointer;
+  transition: transform 75ms ease;
+  &.map__week-button--1-available {
+    display: block;
+    &:hover {
+      transform: scale(1.05);
+      transition: transform 75ms ease;
+    }
+  }
+  &.map__week-button--23-available {
+    display: none;
+    &:hover {
+      transform: scale(1.05);
+      transition: transform 75ms ease;
+    }
+  }
+  &.map__week-button--23-unavailable {
+    cursor: not-allowed;
+    display: block;
+  }
+  &.map__week-button--4-available {
+    display: none;
+    &:hover {
+      transform: scale(1.05);
+      transition: transform 75ms ease;
+    }
+  }
+  &.map__week-button--4-unavailable {
+    cursor: not-allowed;
+    display: block;
+  }
+}
+
+.map__week-button--unavailable {
+  cursor: not-allowed;
+}
+
+.map__week-text {
+  strong {
+    font-weight: 500;
+  }
+}
+
+.map__week-concepts {
+  font-style: italic;
+  font-size: $font-size-xs;
+}
+
+.m__highlight-1,
+.m__highlight-2,
+.m__highlight-3,
+.m__highlight-4 {
+  opacity: 0;
+  transition: opacity 100ms ease;
+}
+.m__flag-1,
+.m__flag-2,
+.m__flag-3,
+.m__flag-4 {
+  //transform: scale(1);
+  transition: transform 100ms ease;
+}
+
+.m__hover.state--selected,
+.m__hover:hover {
+  cursor: pointer;
+  .m__highlight-1,
+  .m__highlight-2,
+  .m__highlight-3,
+  .m__highlight-4 {
+    opacity: 0.7;
+    transition: opacity 100ms ease;
+  }
+  .m__flag-1,
+  .m__flag-2,
+  .m__flag-3,
+  .m__flag-4 {
+    //transform: scale(1.01);
+    transition: transform 100ms ease;
+  }
+}
