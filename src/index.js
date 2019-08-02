@@ -3,7 +3,6 @@ require('./styles/index.scss')
 
 document.addEventListener("DOMContentLoaded", () => {
 
-
 // GLOBAL
 
 // TODO: Note to future self: change these each week!
@@ -41,7 +40,7 @@ const treasureUnavail       = document.getElementsByClassName('secret-treasure--
 
 const allCharItems          = document.querySelectorAll( '.character__wrapper .item')
 const allClaimTreasureItems = document.querySelectorAll('[data-action="claim-treasure"]')
-const allCurrentWeekSteps   = document.querySelectorAll('[data-weekstep="'+weekStep+'"]')
+const allCurrentWeekSteps   = document.querySelectorAll('[data-weekstep="' + weekStep + '"]')
 const allWeekButtons        = document.querySelectorAll( '.week__button')
 const allWeekDots           = document.querySelectorAll('.week__dot')
 const allWeekItems          = document.querySelectorAll('.week__item')
@@ -76,30 +75,25 @@ testForAdBlocker(function( blocksAds ) {
                 isBrave = true
                 if (document.body.classList.contains('home')) unburyTreasure()
                   _paq.push(['trackEvent', 'isBrave', 'true']);
-
             } else {
                 localStorage.setItem("isUsingBrave", false)
                 isBrave = false
                 if (document.body.classList.contains('home')) unburyTreasure()
                   _paq.push(['trackEvent', 'isBrave', 'false']);
-
             }
         } else {
             localStorage.setItem("isUsingBrave", false)
             isBrave = false
             if (document.body.classList.contains('home')) unburyTreasure()
               _paq.push(['trackEvent', 'isBrave', 'false']);
-
         }
     } else {
         localStorage.setItem("isUsingBrave", false)
         isBrave = false
         if (document.body.classList.contains('home')) unburyTreasure()
           _paq.push(['trackEvent', 'isBrave', 'false']);
-
     }
 })
-
 
 
 // get local storage values
@@ -114,15 +108,15 @@ itemKeys.forEach( item => {
         let itemNum = item.slice(8,9)
         let persist = false
         selectItem(weekNum, itemNum, persist)
-        _paq.push([ 'trackEvent', 'Item In Local Storage', weekNum + '-' + itemNum ]);
+        _paq.push([ 'trackEvent', 'Item In Local Storage', weekNum + '-' + itemNum ])
     }
 })
 
 // set local storage values
 localStorage.setItem("latestAvailableWeek", latestAvailableWeek)
 localStorage.setItem("latestUserWeek", latestUserWeek)
-_paq.push([ 'trackEvent', 'Latest Available Week', latestAvailableWeek ]);
-_paq.push([ 'trackEvent', 'Latest User Week', latestUserWeek ]);
+_paq.push([ 'trackEvent', 'Latest Available Week', latestAvailableWeek ])
+_paq.push([ 'trackEvent', 'Latest User Week', latestUserWeek ])
 
 
 // ON EVENTS
@@ -148,7 +142,15 @@ if(adventureBtnBase) {
       window.location="week-"+newWeek+".html"
       _paq.push([ 'trackEvent', 'Clicked: Adventure Button', newWeek ]);
     } )
+    adventureBtnBase.classList.add("state--week-" + newWeek)
+
+  if(week2Available || newWeek===2) adventureBtnBase.classList.add("state--unavailable")
+  if(week3Available || newWeek===3) adventureBtnBase.classList.add("state--unavailable")
+  if(week4Available || newWeek===4) adventureBtnBase.classList.add("state--unavailable")
+
 }
+
+
 
 // onclick: change female <> male
 if(characterChoiceBtn) characterChoiceBtn.addEventListener('click', toggleCharacter)

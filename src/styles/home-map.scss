@@ -21,7 +21,6 @@
 }
 
 .map__wrapper {
-  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -32,8 +31,8 @@
     width: 100%;
     height: auto;
   }
-  @include bp(screen-sm) {
-    display: none;
+  @include bp(screen-sm-min) {
+    display: flex;
   }
 }
 
@@ -102,7 +101,8 @@
   display: block;
   cursor: pointer;
   transition: transform 75ms ease;
-  margin-bottom: -2vw;
+  margin-bottom: -4vw;
+  margin-top: 4vw;
   a {
     display: block;
   }
