@@ -82,7 +82,7 @@ module.exports = {
             ,
             {
                 // Load all icons
-                test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+                test: /\.(eot|woff|woff2|svg|ttf|webmanifest)([\?]?.*)$/,
                 use: [
                     {
                         loader: 'file-loader',

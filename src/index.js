@@ -75,23 +75,29 @@ testForAdBlocker(function( blocksAds ) {
                 localStorage.setItem("isUsingBrave", true)
                 isBrave = true
                 if (document.body.classList.contains('home')) unburyTreasure()
+                  _paq.push(['trackEvent', 'isBrave', 'true']);
+
             } else {
                 localStorage.setItem("isUsingBrave", false)
                 isBrave = false
                 if (document.body.classList.contains('home')) unburyTreasure()
+                  _paq.push(['trackEvent', 'isBrave', 'false']);
+
             }
         } else {
             localStorage.setItem("isUsingBrave", false)
             isBrave = false
             if (document.body.classList.contains('home')) unburyTreasure()
+              _paq.push(['trackEvent', 'isBrave', 'false']);
+
         }
     } else {
         localStorage.setItem("isUsingBrave", false)
         isBrave = false
         if (document.body.classList.contains('home')) unburyTreasure()
-    }
+          _paq.push(['trackEvent', 'isBrave', 'false']);
 
-    document.body.removeAttribute('style')
+    }
 })
 
 
@@ -108,13 +114,15 @@ itemKeys.forEach( item => {
         let itemNum = item.slice(8,9)
         let persist = false
         selectItem(weekNum, itemNum, persist)
+        _paq.push([ 'trackEvent', 'Item In Local Storage', weekNum + '-' + itemNum ]);
     }
 })
 
 // set local storage values
 localStorage.setItem("latestAvailableWeek", latestAvailableWeek)
 localStorage.setItem("latestUserWeek", latestUserWeek)
-
+_paq.push([ 'trackEvent', 'Latest Available Week', latestAvailableWeek ]);
+_paq.push([ 'trackEvent', 'Latest User Week', latestUserWeek ]);
 
 
 // ON EVENTS
@@ -123,7 +131,7 @@ localStorage.setItem("latestUserWeek", latestUserWeek)
 chooseCharacter( characterChoice )
 
 // onload: display the stuff for the current week
-displayMap( latestAvailableWeek )
+displayMap( latestUserWeek + 1 )
 
 // onload: fill in recent weeks
 
@@ -136,7 +144,10 @@ if(week4Available && mapWeek4) mapWeek4.classList.add("state--available")
 // update home button on click
 let newWeek = parseInt(latestUserWeek) + 1
 if(adventureBtnBase) {
-    adventureBtnBase.addEventListener('click', function(){ window.location="week-"+newWeek+".html" } )
+    adventureBtnBase.addEventListener('click', function(){
+      window.location="week-"+newWeek+".html"
+      _paq.push([ 'trackEvent', 'Clicked: Adventure Button', newWeek ]);
+    } )
 }
 
 // onclick: change female <> male
@@ -160,6 +171,8 @@ allClaimTreasureItems.forEach((item) => {
         treasureClaimed.style.display = 'block'
         localStorage.setItem("claimedTreasure", true)
         showSuccessModal('brave','flag')
+        _paq.push([ 'trackEvent', 'Claimed Brave Treasure', 'true' ]);
+
     }
   })
 })
@@ -205,10 +218,12 @@ function chooseCharacter(gender) {
     let oppositeGender= (gender==='female') ? 'male' : 'female'
     localStorage.setItem('characterChoice', gender)
     characterWrapper.setAttribute('data-state', gender+'-selected')
+    _paq.push([ 'trackEvent', 'Chose Character', gender ]);
 }
 
 // changes adventure map to show each week
 function displayMap(weekNumber) {
+    if (weekNumber > 4) weekNumber = 4
     for (var i = 0 ; i < allMapContents.length ; i++) {
         if ( allMapContents[i].classList.contains('map--'+weekNumber) ) {
             allMapContents[i].classList.add('state--selected')
@@ -218,6 +233,7 @@ function displayMap(weekNumber) {
             allMapHighlights[i].classList.remove('state--selected')
         }
     }
+    _paq.push([ 'trackEvent', 'Clicked Map Week', weekNumber ]);
 }
 
 function updateAdventureBar(latestUserWeek) {
@@ -248,12 +264,16 @@ function unburyTreasure() {
     treasureClaimed.style.display = 'none'
     if ( JSON.parse(localStorage.getItem("claimedTreasure")) ) {
         treasureClaimed.style.display = 'block'
+        _paq.push([ 'trackEvent', 'Treasure State', 'Claimed' ]);
     } else if ( isBrave ) {
         treasureAvailab.style.display = 'block'
+        _paq.push([ 'trackEvent', 'Treasure State', 'Available' ]);
     } else if ( JSON.parse(localStorage.getItem("isUsingBrave")) ) {
         treasureAvailab.style.display = 'block'
+        _paq.push([ 'trackEvent', 'Treasure State', 'Available' ]);
     } else {
         treasureUnavail.style.display = 'block'
+        _paq.push([ 'trackEvent', 'Treasure State', 'Unavailable' ]);
     }
 }
 
@@ -284,6 +304,8 @@ function selectWeekStep(num) {
         nextWeekBtn.style.opacity = 0
     }
 
+    _paq.push([ 'trackEvent', 'Week: Selected Step', num ]);
+
 }
 
 
@@ -292,6 +314,8 @@ function selectItem(weekNum, itemNum, persist, successURL) {
     itemNum = parseInt(itemNum)
     successURL = successURL ? successURL : "#"
     let itemClass = 'item__' + weekNum + '-' + itemNum
+
+    _paq.push([ 'trackEvent', 'Item: Hover', weekNum + '-' + itemNum ]);
 
     document.querySelector( '.character__wrapper .item__' + weekNum + '-1').style.opacity = 0
     document.querySelector( '.character__wrapper .item__' + weekNum + '-2').style.opacity = 0
@@ -304,6 +328,7 @@ function selectItem(weekNum, itemNum, persist, successURL) {
         localStorage.setItem('item__' + weekNum + '-3', false)
         localStorage.setItem(itemClass, true)
         showSuccessModal(weekNum, itemNum, successURL)
+        _paq.push([ 'trackEvent', 'Item: Selected', weekNum + '-' + itemNum ]);
     }
 
 }
@@ -325,31 +350,35 @@ function showSuccessModal(weekNum, itemNum, successURL) {
 
     modalItem.src = itemImages[imgKey]
 
-// 'https://twitter.com/intent/tweet?text='
-
     switch ( itemClass ) {
         case 'item__brave-flag':
             modalText.innerHTML = 'You’ve received the <strong>bonus Brave flag!</strong> Thanks for using the Brave Browser!'
-            modalButton.href= 'https://twitter.com/intent/tweet?url=https%3A%2F%2Fsummer.mycrypto.com%3Fbrave&text=I%20just%20scored%20a%20special%20item%20on%20%23MyCryptoSummer%20because%20I%20use%20%40Brave%20for%20all%20my%20browsing!%20%40MyCrypto'
+            modalButton.href= 'https://twitter.com/intent/tweet?text=I%20just%20scored%20a%20special%20item%20on%20%23MyCryptoSummer%20because%20I%20use%20%40Brave%20for%20all%20my%20browsing!%20Start%20your%20adventure%20and%20win%20prizes%20now%20at%20https%3A%2F%2Fsummer.mycrypto.com!%20%40MyCrypto'
+            _paq.push([ 'trackEvent', 'Item: Saw Modal', weekNum + '-' + itemNum ]);
             break;
         case 'item__1-1':
             modalText.innerHTML = 'You received the <strong>Pirate Hat</strong> for selecting the <strong>Download Brave Browser</strong> option!'
-            modalButton.href = 'https://twitter.com/intent/tweet?text=Arrr!%20I%20got%20me%20pirate%20hat%20t%27%20set%20sail%20%27n%20start%20th%27%20%23MyCryptoSummer%20journey!%20Begin%20yer%20adventure%20now%20%27n%20win%20prizes%20at%20https%3A%2F%2Fsummer.mycrypto.com%3F11!%20%40MyCrypto'
+            modalButton.href = 'https://twitter.com/intent/tweet?text=Arrr!%20I%20got%20me%20pirate%20hat%20t%27%20set%20sail%20%27n%20start%20th%27%20%23MyCryptoSummer%20journey!%20Begin%20yer%20adventure%20now%20%27n%20win%20prizes%20at%20https%3A%2F%2Fsummer.mycrypto.com!%20%40MyCrypto'
+            _paq.push([ 'trackEvent', 'Item: Saw Modal', weekNum + '-' + itemNum ]);
             break;
         case 'item__1-2':
             modalText.innerHTML = 'You received the <strong>Snorkel</strong> for selecting the <strong>Earn with Coinbase</strong> option!'
-            modalButton.href = 'https://twitter.com/intent/tweet?text=I%E2%80%99m%20ready%20to%20explore%20the%20%23MyCryptoSummer%20world%20with%20my%20new%20snorkel!%20Start%20your%20adventure%20now%20and%20win%20prizes%20at%20https%3A%2F%2Fsummer.mycrypto.com%3F12!%20%40MyCrypto'
+            modalButton.href = 'https://twitter.com/intent/tweet?text=I%E2%80%99m%20ready%20to%20explore%20the%20%23MyCryptoSummer%20world%20with%20my%20new%20snorkel!%20Start%20your%20adventure%20now%20and%20win%20prizes%20at%20https%3A%2F%2Fsummer.mycrypto.com!%20%40MyCrypto'
+            _paq.push([ 'trackEvent', 'Item: Saw Modal', weekNum + '-' + itemNum ]);
             break;
         case 'item__1-3':
             modalText.innerHTML = 'You received the <strong>Umbrella Hat</strong> for selecting the <strong>Read EthHub</strong> option!'
-            modalButton.href = 'https://twitter.com/intent/tweet?text=I%E2%80%99m%20on%20my%20way%20to%20discovering%20The%20Land%20Of%20Magical%20Internet%20Money%20with%20my%20trusty%20Umbrella%20Hat%2C%20thanks%20to%20%23MyCryptoSummer!%20Start%20your%20adventure%20now%20at%20https%3A%2F%2Fsummer.mycrypto.com%3F13%20%40MyCrypto'
+            modalButton.href = 'https://twitter.com/intent/tweet?text=I%E2%80%99m%20on%20my%20way%20to%20discovering%20The%20Land%20Of%20Magical%20Internet%20Money%20with%20my%20trusty%20Umbrella%20Hat%2C%20thanks%20to%20%23MyCryptoSummer!%20Start%20your%20adventure%20now%20at%20https%3A%2F%2Fsummer.mycrypto.com%20%40MyCrypto%0A'
+            _paq.push([ 'trackEvent', 'Item: Saw Modal', weekNum + '-' + itemNum ]);
             break;
     }
 
     modal.classList.add('open');
 
+    localStorage.setItem("latestUserWeek", weekNum)
+    _paq.push([ 'trackEvent', 'Latest User Week', weekNum ]);
 
-    if (successURL!='#') {
+    if (successURL != undefined && successURL != "#") {
         var newTab = window.open(successURL, '_blank');
         newTab.opener = null;
     }
@@ -360,6 +389,7 @@ modalClose.addEventListener('click', function() { closeModal() })
 
 function closeModal() {
     modal.classList.remove('open');
+    _paq.push([ 'trackEvent', 'Closed Modal via X', true ]);
 }
 
 })

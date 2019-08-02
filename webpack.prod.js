@@ -1,6 +1,5 @@
 const path = require('path');
 
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin'); //installed via npm
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -77,7 +76,7 @@ module.exports = {
             ,
             {
                 // Load all icons
-                test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+                test: /\.(eot|woff|woff2|svg|ttf|webmanifest)([\?]?.*)$/,
                 use: [
                     {
                         loader: 'file-loader',
@@ -101,35 +100,6 @@ module.exports = {
             runPreEmit: true,
         }),
         new CleanWebpackPlugin(buildPath),
-        new FaviconsWebpackPlugin({
-            // Your source logo
-            logo: './src/assets/icon.png',
-            // The prefix for all image files (might be a folder or a name)
-            prefix: 'icons-[hash]/',
-            // Generate a cache file with control hashes and
-            // don't rebuild the favicons until those hashes change
-            persistentCache: true,
-            // Inject the html into the html-webpack-plugin
-            inject: true,
-            // favicon background color (see https://github.com/haydenbleasel/favicons#usage)
-            background: '#057a97',
-            // favicon app title (see https://github.com/haydenbleasel/favicons#usage)
-            title: 'MyCryptoSummer',
-
-            // which icons should be generated (see https://github.com/haydenbleasel/favicons#usage)
-            icons: {
-                android: true,
-                appleIcon: true,
-                appleStartup: true,
-                coast: true,
-                favicons: true,
-                firefox: true,
-                opengraph: true,
-                twitter: true,
-                yandex: true,
-                windows: true
-            }
-        }),
         new MiniCssExtractPlugin({
             filename: 'styles.[contenthash].css'
         }),

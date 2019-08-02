@@ -47,8 +47,12 @@
     @media (max-width: 82em) {
       @content;
     }
-  } @else if $point == screen-xs {
+  } @else if $point == screen-xl {
     @media (max-width: 93em) {
+      @content;
+    }
+  } @else if $point == screen-xl-min {
+    @media (min-width: 93em) {
       @content;
     }
   }

@@ -19,6 +19,9 @@ html {
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: transparent;
   font-size: 16px;
+  @include bp(screen-xl-min) {
+    font-size: 19px;
+  }
 }
 
 @-ms-viewport {

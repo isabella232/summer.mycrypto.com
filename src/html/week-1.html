@@ -12,16 +12,23 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://summer.mycrypto.com/" />
   <meta name="theme-color" content="#057a97">
+  <script type="text/javascript">var _paq = window._paq || [];_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);(function() {var u="https://analytics.mycryptoapi.com/";_paq.push(['setTrackerUrl', u+'matomo.php']);_paq.push(['setSiteId', '10']);var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);})();</script>
   <meta name="msapplication-navbutton-color" content="#057a97">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@MyCrypto">
   <meta name="twitter:image" content="<%= require('../assets/mycryptosummer-og.jpg') %>">
   <meta property="og:image" content="<%= require('../assets/mycryptosummer-og.jpg') %>" />
+  <link rel="apple-touch-icon" sizes="180x180" href="<%= require('../assets/apple-touch-icon.png') %>">
+  <link rel="icon" type="image/png" sizes="32x32" href="<%= require('../assets/favicon-32x32.png') %>">
+  <link rel="icon" type="image/png" sizes="16x16" href="<%= require('../assets/favicon-16x16.png') %>">
+  <link rel="manifest" href="<%= require('../assets/site.webmanifest') %>">
+  <link rel="mask-icon" href="<%= require('../assets/safari-pinned-tab.svg') %>" color="#057a97'">
+  <meta name="msapplication-TileColor" content="#057a97">
+  <meta name="theme-color" content="#ffffff">
 </head>
 
 <body class="week__1">
-
 
   <header class="week__header">
     <a href="/" class="week__logo--1">
@@ -51,8 +58,8 @@
 
         <article class="week__text" data-weekstep="2">
           <p>In The Land Of Magical Internet Money, we’ve developed blockchain technology, and as a result, cryptocurrency!</p>
-          <p>Our blockchain is an efficient, transparent method of digitally storing transaction records. The data within our records cannot be modified or deleted, it can only be added to. It’s also not governed by any single body, which makes it decentralized.</p>
-          <p>Cryptocurrency is a token platform built on top of the blockchain. These tokens are the basis for sending transactions on the blockchain - some of these tokens carry value and some carry information. The benefits of utilizing this technology for our people are far-reaching. We’re able to transact with those all across our land, regardless of their location, and without unnecessary fees. Transactions are also nearly instantaneous.</p>
+          <p>Our <strong>blockchain</strong> is an efficient, transparent method of digitally storing transaction records. The data within our records cannot be modified or deleted, it can only be added to. It’s also not governed by any single body, which makes it decentralized.</p>
+          <p><strong>Cryptocurrency</strong> is a token platform built on top of the blockchain. These tokens are the basis for sending transactions on the blockchain - some of these tokens carry value and some carry information. The benefits of utilizing this technology for our people are far-reaching. We’re able to transact with those all across our land, regardless of their location, and without unnecessary fees. Transactions are also nearly instantaneous.</p>
           <p>And this is just the start! As we continue to use and develop this technology, we discover more and more useful scenarios.</p>
           <p>Alright, that’s enough for now. We have a serious task at hand.</p>
         </article>
@@ -60,23 +67,23 @@
 
         <article class="week__text" data-weekstep="3">
           <p>So, what do you say? Will you help me get back to The Land Of Magical Internet Money?</p>
-          <p>I found a few of these items along the beach earlier. Attached to each item is a unique cache of information that is pertinent to this journey. (Opens in new tab)</p>
+          <p>I found a few of these items along the beach earlier. Attached to each item is a unique cache of information that is pertinent to this journey. <em>(Opens in new tab)</em></p>
           <p>Take whichever one you want. Get some rest and we’ll set sail soon!</p>
           <div class="week__item-wrapper">
             <div class="week__item" data-item="1">
               <div class="week__item-name" data-item="1">Pirate Hat</div>
               <img class="week__item-img" data-item="1" src="<%= require('../assets/item__1-1.svg') %>" width="300" height="300">
-              <a class="week__button" data-item="1" href="#" data-href="https://brave.com/">Download Brave Browser</a>
+              <a class="week__button" data-item="1" href="#" data-href="https://brave.com/myc770">Download or Share The Brave Browser</a>
             </div>
             <div class="week__item" data-item="2">
-              <div class="week__item-name" data-item="2">Snorkle</div>
+              <div class="week__item-name" data-item="2">Snorkel</div>
               <img class="week__item-img" data-item="2" src="<%= require('../assets/item__1-2.svg') %>" width="300" height="300">
-              <a class="week__button" data-item="2" href="#" data-href="">Go to Coinbase</a>
+              <a class="week__button" data-item="2" href="#" data-href="https://coinbase-consumer.sjv.io/c/1375906/625298/9251">Earn Crypto With Coinbase</a>
             </div>
             <div class="week__item" data-item="3">
               <div class="week__item-name" data-item="3">Umbrella Hat</div>
               <img class="week__item-img" data-item="3" src="<%= require('../assets/item__1-3.svg') %>" width="300" height="300">
-              <a class="week__button" data-item="3" href="#" data-href="https://brave.com/">Check Out EthHub</a>
+              <a class="week__button" data-item="3" href="#" data-href="https://docs.ethhub.io/">Learn About Ethereum On EthHub</a>
             </div>
           </div>
         </article>
@@ -84,6 +91,10 @@
 
         <div class="shell__wrapper">
           <img src="<%= require('../assets/shell.svg') %>" width="80" height="43">
+        </div>
+
+        <div class="character__wrapper">
+          <img inline src="src/assets/character.svg">
         </div>
 
 
@@ -110,13 +121,12 @@
     </div>
 
 
-    <div class="character__wrapper">
-      <img inline src="src/assets/character.svg">
+    <div class="guide__wrapper">
+      <img src="<%= require('../assets/guide.svg') %>" width="100%" height="auto">
     </div>
 
-
-    <div class="guide__wrapper">
-      <img src="<%= require('../assets/guide.svg') %>" width="320" height="222">
+    <div class="guide__wrapper--mobile">
+      <img src="<%= require('../assets/guide--mobile.svg') %>" width="100%" height="auto">
     </div>
 
   </main>
@@ -132,7 +142,7 @@
         <h3 class="modal__title">Congrats!</h3>
         <p class="modal__text"></p>
         <img class="modal__item" src="" width="300" height="300">
-        <p class="modal__cta">Share your progress and new item with #MyCryptoSummer to be entered to win prizes!</p>
+        <p class="modal__cta">Share your progress and new item with <a href="https://twitter.com/search?q=%23MyCryptoSummer" target="_blank" rel="noopener noreferrer">#MyCryptoSummer</a> to be entered to win prizes!</p>
         <a class="modal__button" href="#" rel="noopener noreferrer" target="_blank">
           <img class="modal__button-icon" src="<%= require('../assets/icon__twitter.svg') %>" width="24" height="24">
           Share on Twitter

@@ -11,10 +11,12 @@
 .map__title {
   width: 25vw;
   margin: 0 auto -3vw;
-  @include bp(screen-sm) {
+  img {
     width: 100%;
-    text-align: center;
-    margin: 0 auto;
+    height: auto;
+  }
+  @include bp(screen-sm) {
+    display: none;
   }
 }
 
@@ -24,6 +26,15 @@
   justify-content: center;
   flex-direction: column;
   text-align: center;
+  width: 100%;
+  height: auto;
+  svg {
+    width: 100%;
+    height: auto;
+  }
+  @include bp(screen-sm) {
+    display: none;
+  }
 }
 
 .map__background {
@@ -32,18 +43,19 @@
 }
 
 .map__inner {
-  @include bp(screen-sm-min) {
-    position: absolute;
-    width: 35%;
-    height: auto;
-    padding: 3rem;
-  }
-  padding: 1rem;
+  position: absolute;
+  width: 38vw;
+  height: auto;
+  padding: 3vw;
   background-image: url(./../assets/map__inner-bg.svg);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   display: none;
+  @include bp(screen-sm) {
+    width: 100%;
+    padding: 5vw;
+  }
   .map__week-text--available,
   .map__week-button--available {
     display: none;
@@ -70,15 +82,37 @@
 }
 
 .map__week-title {
-  margin-bottom: 1rem;
-  margin-top: 2rem;
+  margin-bottom: 1vw;
+  margin-top: 2vw;
+  width: 8vw;
+  height: auto;
+  text-align: center;
+  margin: 2vw auto 1vw;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  @include bp(screen-sm) {
+    width: 26vw;
+  }
 }
 
 .map__week-button {
-  position: relative;
-  bottom: -1vw;
+  width: 100%;
+  display: block;
   cursor: pointer;
   transition: transform 75ms ease;
+  margin-bottom: -2vw;
+  a {
+    display: block;
+  }
+  img {
+    width: 14vw;
+    height: auto;
+    @include bp(screen-sm) {
+      width: 40vw;
+    }
+  }
   &.map__week-button--1-available {
     display: block;
     &:hover {

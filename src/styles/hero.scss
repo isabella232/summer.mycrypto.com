@@ -1,8 +1,6 @@
 body.home {
-  @include bp(screen-sm-min) {
-    background-color: $sand;
-    padding-bottom: 7rem;
-  }
+  background-color: $sand;
+  padding-bottom: 7rem;
 }
 
 .hero {
@@ -11,10 +9,15 @@ body.home {
   background-position: center top;
   background-repeat: no-repeat;
   min-height: 60vw;
+  background-color: $sand;
+  padding: 2vw;
   @include bp(screen-sm-min) {
-    background-color: $sand;
     background-image: url('./../assets/home-bg.svg');
-    padding: $space;
+  }
+
+  @include bp(screen-sm) {
+    min-height: 100vh;
+    background-image: url('./../assets/home-bg--mobile.svg');
   }
 }
 
@@ -23,18 +26,18 @@ body.home {
   width: 100rem;
   display: block;
   height: auto;
-  margin-bottom: $space;
+  margin-bottom: $space-sm;
   @include bp(screen-sm) {
     width: 9em;
     max-width: 9em;
-    margin: $space-sm auto;
+    margin: 1vw;
   }
 }
 
 .hero__wrapper {
   display: flex;
   @include bp(screen-sm) {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 }
 
@@ -42,7 +45,6 @@ body.home {
   width: 38%;
   @include bp(screen-sm) {
     width: 100%;
-    padding: $space-sm;
   }
 }
 
@@ -56,7 +58,6 @@ body.home {
   text-transform: uppercase;
   @include bp(screen-sm) {
     display: none;
-    margin: 0 0 $space-sm;
   }
 }
 
@@ -74,10 +75,6 @@ body.home {
 .hero__text {
   color: $gray-md;
   line-height: 1.5;
-  @include bp(screen-sm) {
-    line-height: 1.4;
-    font-size: 0.9em;
-  }
 }
 
 .partner__title {
@@ -85,23 +82,9 @@ body.home {
   font-weight: 700;
   font-size: $font-size-sm;
   margin: $space-sm 0;
-  @include bp(screen-sm) {
-    font-size: 1.1em;
-    display: inline;
-    vertical-align: middle;
-  }
-  @include bp(screen-sm) {
-    display: none;
-  }
 }
 
 .partner__link {
-  @include bp(screen-sm-min) {
-    display: block;
-  }
-  @include bp(screen-sm) {
-    display: none;
-  }
 }
 
 .partner__logo {
@@ -110,12 +93,6 @@ body.home {
   min-width: 8.75rem;
   max-width: 12.25rem;
   transition: transform 50ms ease;
-  @include bp(screen-sm-min) {
-    display: block;
-  }
-  @include bp(screen-sm) {
-    display: none;
-  }
   &:hover {
     transform: rotate(-1deg) scale(1.05);
     transition: transform 50ms ease;
@@ -125,28 +102,20 @@ body.home {
 .hero__right {
   flex: 1;
   @include bp(screen-sm) {
-    background-color: $sand;
-    background-image: url('./../assets/home-bg--mobile_aa.svg');
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    margin-top: -2rem;
-    min-height: 100vw;
-    padding: $space-lg $space-sm $space-sm;
-    width: 100%;
     position: relative;
+    margin: 1vh 0 5vh;
   }
 }
 
 .secret-treasure__wrapper {
   @include bp(screen-sm-min) {
     position: absolute;
-    top: 21rem;
-    right: 20vw;
+    top: 24vw;
+    right: 19vw;
   }
-  @include bp(screen-sm) {
-    display: none;
-  }
+  position: relative;
+  height: 109px;
+  top: 5vh;
 }
 
 .secret-treasure__tooltip {
@@ -185,19 +154,25 @@ body.home {
     bottom: -3rem;
     z-index: -1;
   }
+  @include bp(screen-sm) {
+    right: 0;
+    left: auto;
+  }
 }
 
 .secret-treasure--unavailable {
-  @include bp(screen-sm-min) {
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
+  position: absolute;
+  left: 0;
+  top: 0;
   cursor: pointer;
   transition: transform 50ms ease;
   &:hover {
     transform: rotate(1deg) scale(1.05);
     transition: transform 50ms ease;
+  }
+  @include bp(screen-sm) {
+    right: 0;
+    left: auto;
   }
 }
 
@@ -211,37 +186,97 @@ body.home {
 }
 
 .secret-treasure--available {
-  @include bp(screen-sm-min) {
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
+  position: absolute;
+  left: 0;
+  top: 0;
   cursor: pointer;
   transition: transform 50ms ease;
   &:hover {
     transform: rotate(1deg) scale(1.05);
     transition: transform 50ms ease;
   }
+  @include bp(screen-sm) {
+    right: 0;
+    left: auto;
+  }
 }
 
 .secret-treasure--flag {
-  @include bp(screen-sm-min) {
-    position: absolute;
-    left: 2rem;
-    top: -7rem;
-    width: 90px;
-    height: auto;
+  position: absolute;
+  left: 2rem;
+  top: -7rem;
+  width: 90px;
+  height: auto;
+  @include bp(screen-sm) {
+    right: 0;
+    left: auto;
   }
 }
 
 .home .character__wrapper {
+  position: relative;
   @include bp(screen-sm-min) {
     position: absolute;
     top: 19rem;
     right: 17rem;
   }
+  @include bp(screen-xl-min) {
+    top: 20rem;
+    right: 21rem;
+  }
   @include bp(screen-sm) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+.home .character__wrapper .character {
+  height: auto;
+  @include bp(screen-sm-min) {
+    width: 22vw;
+
+    position: absolute;
+    right: 2vw;
+    top: -2vw;
+  }
+  @include bp(screen-sm) {
+    width: 50vw;
+  }
+}
+
+.character-choice {
+  @include bp(screen-sm-min) {
+    position: absolute;
+    top: 10vw;
+    right: -8vw;
+    width: 13vw;
+  }
+  @include bp(screen-sm) {
+    width: 35vw;
     position: relative;
+    top: 5vh;
+  }
+}
+
+.character-choice__text {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.character-choice__button {
+  display: block;
+  position: relative;
+  left: -0.5rem;
+  top: 0.25rem;
+  cursor: pointer;
+  transition: transform 50ms ease;
+  width: 70%;
+  height: auto;
+  &:hover {
+    transform: scale(1.02);
+    transition: transform 50ms ease;
   }
 }
 
@@ -284,70 +319,22 @@ body.home {
   transition: transform 100ms ease;
 }
 
+.character,
 .character--female,
 .character--male {
-  width: 12vw;
-  height: auto;
   transition: opacity 100ms ease;
-  position: absolute;
-  @include bp(screen-sm-min) {
-    top: 0;
-    left: 0;
-  }
-  @include bp(screen-sm) {
-    width: 9em;
-  }
 }
 
 .item {
   opacity: 0;
 }
 
-.character-choice {
-  height: auto;
-  left: 15em;
-  position: absolute;
-  top: 10rem;
-  @include bp(screen-sm) {
-    position: absolute;
-    right: 1em;
-    top: 6em;
-    width: 50%;
-    left: auto;
-  }
-}
-
-.character-choice__text {
-  display: block;
-}
-
-.character-choice__button {
-  display: block;
-  position: relative;
-  left: -0.5rem;
-  top: 0.25rem;
-  cursor: pointer;
-  transition: transform 50ms ease;
-  &:hover {
-    transform: scale(1.02);
-    transition: transform 50ms ease;
-  }
-  @include bp(screen-sm) {
-    width: 90px;
-    height: 53px;
-  }
-}
-
 .adventure-bar__wrapper {
-  position: absolute;
   @include bp(screen-sm-min) {
-    right: $space-sm;
-    top: 37.5rem;
+    right: 1vw;
+    top: 46vw;
     width: 63vw;
-  }
-  @include bp(screen-sm) {
-    bottom: 0;
-    width: 92%;
+    position: absolute;
   }
 }
 

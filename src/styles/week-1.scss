@@ -6,42 +6,61 @@ body.week__1 {
   min-height: 100vh;
   width: 100%;
   background-position: center top;
-  padding: 0 $space-sm $space-sm;
+  padding: 0 1vw 1vw;
 }
 
 .week__header {
   display: flex;
   justify-content: center;
   align-content: center;
+  @include bp(screen-sm) {
+    flex-direction: column;
+  }
 }
 .week__filler--1,
 .week__logo--1 {
   flex: 1;
   margin: 0;
-  width: 11rem;
-  min-width: 11rem;
-  max-width: 11rem;
+  min-width: 14vw;
   height: auto;
   display: flex;
   img {
     width: 100%;
     height: auto;
   }
+  @include bp(screen-sm) {
+    flex: 1;
+    margin: 1vw auto;
+    width: 50vw;
+    height: auto;
+  }
 }
+
+.week__filler--1 {
+  @include bp(screen-sm) {
+    display: none;
+  }
+}
+
 .week__progress--1 {
-  flex: 10;
   display: flex;
+  width: 100%;
+  height: auto;
 }
 .week__inner-wrapper {
   background: white;
   border: 0.3rem solid #fccb56;
   display: flex;
   flex-direction: column;
-  margin: $space auto;
-  max-width: 43rem;
+  margin: 4vw auto 1vw;
+  width: 55vw;
   min-height: 65vh;
-  padding: 3rem $space $space-sm;
+  padding: 5vw 4vw 2vw;
   position: relative;
+  @include bp(screen-sm) {
+    width: 92vw;
+    padding: 11vw 6vw 42vw 6vw;
+  }
 }
 
 .week__inner {
@@ -49,40 +68,95 @@ body.week__1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
 
 .week__title {
   position: absolute;
-  margin-top: -5rem;
-  left: 49%; // bc dropshadow
+  top: -7.5vw;
+  left: 49%;
   transform: translateX(-50%);
+  width: 12vw;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  @include bp(screen-sm) {
+    margin-top: -10.5vw;
+    top: -7.5vw;
+    width: 32vw;
+  }
 }
 
 .week__1 .character__wrapper {
   pointer-events: none;
-  @include bp(screen-sm-min) {
-    position: fixed;
-    top: 50%;
-    left: 0;
+  .character {
+    width: 23vw;
+    height: auto;
+    position: absolute;
+    left: -23vw;
+    bottom: -3vw;
+    top: auto;
+    @include bp(screen-sm) {
+      bottom: -7vw;
+      height: auto;
+      left: -9vw;
+      position: fixed;
+      top: auto;
+      width: 43vw;
+    }
   }
 }
 
 .guide__wrapper {
-  width: 20rem;
+  width: 25vw;
   height: auto;
-  position: fixed;
-  right: $space-sm;
-  bottom: $space-sm;
   pointer-events: none;
+  right: 1vw;
+  bottom: 1vw;
+  position: absolute;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  @include bp(screen-sm) {
+    display: none;
+  }
+}
+
+.guide__wrapper--mobile {
+  display: none;
+  width: 25vw;
+  height: auto;
+  pointer-events: none;
+  right: 1vw;
+  bottom: 1vw;
+  position: fixed;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  @include bp(screen-sm) {
+    display: block;
+  }
 }
 
 .shell__wrapper {
-  width: 5rem;
+  width: 6vw;
   height: auto;
   position: absolute;
-  left: -2.3rem;
-  bottom: -1.5rem;
+  left: -6vw;
+  bottom: -6vw;
   pointer-events: none;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  @include bp(screen-sm) {
+    position: fixed;
+    left: 1vw;
+    bottom: 1vw;
+  }
 }
 
 .week-controls__wrapper {
@@ -101,12 +175,15 @@ body.week__1 {
 
 .week__item {
   padding: 0.25rem;
-  width: 33.33%;
+  width: 100%;
   &:first-child {
     margin-left: -($space-sm);
   }
   &:last-child {
     margin-right: -($space-sm);
+  }
+  @include bp(screen-sm) {
+    width: 100%;
   }
 }
 
@@ -120,6 +197,10 @@ body.week__1 {
   border: 3px solid white;
   transition: all ease 100ms;
   cursor: pointer;
+  @include bp(screen-sm) {
+    width: 100%;
+    padding: 0;
+  }
 }
 
 .week__item:hover .week__item-img,

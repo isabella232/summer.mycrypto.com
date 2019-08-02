@@ -18,6 +18,12 @@
   border: 0.3rem solid #fccb56;
   padding: 5vw 9vw;
   position: relative;
+  @include bp(screen-sm) {
+    padding: 10vh 5vw;
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
 }
 .modal__close {
   position: absolute;
