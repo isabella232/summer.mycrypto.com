@@ -5,16 +5,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
+    <style>
+      td {
+        border: 1px solid lightgray;
+        padding: 6px;
+      }
+      td:first-child {
+        font-weight: bold;
+      }
+    </style>
 </head>
 
 <body>
-    test
+
+<table>
+  <tr>
+    <td>Conclusion</td>
+    <td><h2 id="conclusion"></h2></td>
+  </tr>
+  <tr>
+    <td>User-agent</td>
+    <td id="ua"></td>
+  </tr>
+  <tr>
+    <td>Is Chrome?</td>
+    <td id="isChrome"></td>
+  </tr>
+  <tr>
+    <td>Is Brave?</td>
+    <td id="isBrave"></td>
+  </tr>
+  <tr>
+    <td>Blocks Ads</td>
+    <td id="blocksAds"></td>
+  </tr>
+  <tr>
+    <td>Has Plugins?</td>
+    <td id="hasPlugins"></td>
+  </tr>
+  <tr>
+    <td>Plugins Length</td>
+    <td id="pluginsLength"></td>
+  </tr>
+  <tr>
+    <td>Plugin Names</td>
+    <td id="pluginsName"></td>
+  </tr>
+  <tr>
+    <td>Plugins (Simple)</td>
+    <td id="simplePlugins"></td>
+  </tr>
+  <tr>
+    <td>Plugins (Full)</td>
+    <td id="pluginsObject"></td>
+  </tr>
+</table>
+
 </body>
+
+
 <script>
+window.onerror = function (err, file, line) {
+    document.body.append('The following error occurred: ' +
+    err + '\nIn file: ' + file + '\nOn line: ' + line);
+    return true;
+}
+
 // Detect Brave
-const isChrome = !!window.chrome;
-const hasPlugins = navigator.plugins.length > 0
-const ua = navigator.userAgent
+const ua            = window.navigator.userAgent.toLowerCase()
+const isChrome      = /chrome|crios/.test(ua) && ! /edge|opr\//.test(ua)
+const plugins       = navigator.plugins
+const pluginsObject = plugins
+const hasPlugins    = plugins.length > 0
+
+const ObjToSource=(o)=> {
+    if (!o) return null;
+    let str="",na=0,k,p;
+    if (typeof(o) == "object") {
+        if (!ObjToSource.check) ObjToSource.check = new Array();
+        for (k=ObjToSource.check.length;na<k;na++) if (ObjToSource.check[na]==o) return '{}';
+        ObjToSource.check.push(o);
+    }
+    k="",na=typeof(o.length)=="undefined"?1:0;
+    for(p in o){
+        if (na) k = "'"+p+"':";
+        if (typeof o[p] == "string") str += k+"'"+o[p]+"',";
+        else if (typeof o[p] == "object") str += k+ObjToSource(o[p])+",";
+        else str += k+o[p]+",";
+    }
+    if (typeof(o) == "object") ObjToSource.check.pop();
+    if (na) return "{"+str.slice(0,-1)+"}";
+    else return "["+str.slice(0,-1)+"]";
+}
+const twoPlugins=(o)=> {
+  if (plugins.length === 2) {
+    if (plugins[0].name ==="Chrome PDF Plugin" && plugins[1].name==="Chrome PDF Viewer") {
+      return true
+    }
+  } else {
+    return false
+  }
+}
+
+var simplePlugins = '';
+for (var property in pluginsObject) {
+  simplePlugins += property + ': ' + pluginsObject[property]+'; ';
+}
 
 const testForAdBlocker = function(callback) {
     const img = new Image;
@@ -27,34 +123,70 @@ const testForAdBlocker = function(callback) {
     img.src = 'https://mycrypto.com/&showad=TEST_URL_TO_CHECK_FOR_BRAVE_AD_BLOCKING';
 }
 
+console.log(pluginsObject)
+
+
 testForAdBlocker(function(blocksAds) {
     if (isChrome) {
-        console.log('test1')
         if (!hasPlugins) {
-            console.log('test2')
             if (blocksAds) {
-                localStorage.setItem("isUsingBrave", true);
                 const isBrave = true
-                console.log('test3')
-                document.body.innerHTML = "<br /><br /> User-agent: " + ua + "<br /><br /> isChrome: " + isChrome + "<br /><br /> HasPlugins: " + hasPlugins + "<br /><br /> Blocks Ads: " + blocksAds + "<br /><br /> isBrave: " + isBrave + "<br /><br /> " + "<strong>you are on BRAVE?</strong>";
+                document.getElementById('ua').innerHTML = ua
+                document.getElementById('isChrome').innerHTML = isChrome
+                document.getElementById('hasPlugins').innerHTML = hasPlugins
+                document.getElementById('pluginsLength').innerHTML = plugins.length
+                document.getElementById('simplePlugins').innerHTML = simplePlugins
+                document.getElementById('pluginsObject').innerHTML = ObjToSource(pluginsObject)
+                document.getElementById('blocksAds').innerHTML = blocksAds
+                document.getElementById('isBrave').innerHTML = isBrave
+                document.getElementById('conclusion').innerHTML = "you are on brave"
             } else {
-                localStorage.setItem("isUsingBrave", false);
                 const isBrave = false
-                console.log('test4')
-                document.body.innerHTML = "<br /><br /> User-agent: " + ua + "<br /><br /> isChrome: " + isChrome + "<br /><br /> HasPlugins: " + hasPlugins + "<br /><br /> Blocks Ads: " + blocksAds + "<br /><br /> isBrave: " + isBrave + "<br /><br /> " + "<strong>you are on chrome mobile?</strong>";
+                document.getElementById('ua').innerHTML = ua
+                document.getElementById('isChrome').innerHTML = isChrome
+                document.getElementById('hasPlugins').innerHTML = hasPlugins
+                document.getElementById('pluginsLength').innerHTML = plugins.length
+                document.getElementById('simplePlugins').innerHTML = simplePlugins
+                document.getElementById('pluginsObject').innerHTML = ObjToSource(pluginsObject)
+                document.getElementById('blocksAds').innerHTML = blocksAds
+                document.getElementById('isBrave').innerHTML = isBrave
+                document.getElementById('conclusion').innerHTML = "you are on chrome mobile"
             }
+        } else if (plugins.length===2 && twoPlugins) {
+            const isBrave = true
+            document.getElementById('ua').innerHTML = ua
+            document.getElementById('isChrome').innerHTML = isChrome
+            document.getElementById('hasPlugins').innerHTML = hasPlugins
+            document.getElementById('pluginsLength').innerHTML = plugins.length
+            document.getElementById('pluginsName').innerHTML = plugins[0].name + " & " + plugins[1].name
+            document.getElementById('simplePlugins').innerHTML = simplePlugins
+            document.getElementById('pluginsObject').innerHTML = ObjToSource(pluginsObject)
+            document.getElementById('blocksAds').innerHTML = blocksAds
+            document.getElementById('isBrave').innerHTML = isBrave
+            document.getElementById('conclusion').innerHTML = "you are on brave nightly"
         } else {
-            localStorage.setItem("isUsingBrave", false);
             const isBrave = false
-            console.log('test5')
-            document.body.innerHTML = "<br /><br /> User-agent: " + ua + "<br /><br /> isChrome: " + isChrome + "<br /><br /> HasPlugins: " + hasPlugins + "<br /><br /> Blocks Ads: " + blocksAds + "<br /><br /> isBrave: " + isBrave + "<br /><br /> <strong>you are on chrome desktop</strong>";
+            document.getElementById('ua').innerHTML = ua
+            document.getElementById('isChrome').innerHTML = isChrome
+            document.getElementById('hasPlugins').innerHTML = hasPlugins
+            document.getElementById('pluginsLength').innerHTML = plugins.length
+            document.getElementById('simplePlugins').innerHTML = simplePlugins
+            document.getElementById('pluginsObject').innerHTML = ObjToSource(pluginsObject)
+            document.getElementById('blocksAds').innerHTML = blocksAds
+            document.getElementById('isBrave').innerHTML = isBrave
+            document.getElementById('conclusion').innerHTML = "you are on chrome desktop"
         }
     } else {
-        console.log('test6')
-        localStorage.setItem("isUsingBrave", false);
         const isBrave = false
-        console.log('test6')
-        document.body.innerHTML = "<br /><br /> User-agent: " + ua + "<br /><br /> isChrome: " + isChrome + "<br /><br /> HasPlugins: " + hasPlugins + "<br /><br /> Blocks Ads: " + blocksAds + "<br /><br /> isBrave: " + isBrave + "<br /><br /> <strong>you're on some other piece of shit browser (firefox, safari, ie, etc.)</strong>";
+        document.getElementById('ua').innerHTML = ua
+        document.getElementById('isChrome').innerHTML = isChrome
+        document.getElementById('hasPlugins').innerHTML = hasPlugins
+        document.getElementById('pluginsLength').innerHTML = plugins.length
+        document.getElementById('simplePlugins').innerHTML = simplePlugins
+        document.getElementById('pluginsObject').innerHTML = ObjToSource(pluginsObject)
+        document.getElementById('blocksAds').innerHTML = blocksAds
+        document.getElementById('isBrave').innerHTML = isBrave
+        document.getElementById('conclusion').innerHTML = "you are on some other piece of shit browser (firefox, safari, ie, etc.)"
     }
 
 });

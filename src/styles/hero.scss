@@ -1,6 +1,10 @@
+html {
+  width: 100%;
+}
 body.home {
   background-color: $sand;
   padding-bottom: 7rem;
+  width: 100%;
 }
 
 .hero {
@@ -11,6 +15,7 @@ body.home {
   min-height: 60vw;
   background-color: $sand;
   padding: 2vw;
+  width: 100%;
   @include bp(screen-sm-min) {
     background-image: url('./../assets/home-bg.svg');
   }
@@ -155,9 +160,12 @@ body.home {
     z-index: -1;
   }
   @include bp(screen-sm) {
-    right: 0;
+    width: 36vw;
+    position: absolute;
+    right: 10vw;
+    bottom: -10vh;
     left: auto;
-    top: 7vh;
+    top: auto;
   }
 }
 
@@ -172,9 +180,11 @@ body.home {
     transition: transform 50ms ease;
   }
   @include bp(screen-sm) {
-    right: 0;
     left: auto;
-    top: 7vh;
+    top: 10vh;
+    right: 5vw;
+    width: 35vw;
+    z-index: 100;
   }
 }
 
@@ -198,9 +208,11 @@ body.home {
     transition: transform 50ms ease;
   }
   @include bp(screen-sm) {
-    right: 0;
     left: auto;
-    top: 7vh;
+    top: 10vh;
+    right: 5vw;
+    width: 35vw;
+    z-index: 100;
   }
 }
 
@@ -359,6 +371,9 @@ body.home {
 }
 
 .ab__btn-base {
+  filter: url(#grayscale);
+  pointer-events: none;
+  cursor: not-allowed;
   transition: transform 50ms ease;
   cursor: pointer;
   .ab__btn {
@@ -382,10 +397,8 @@ body.home {
   display: none;
 }
 
-.ab__btn-base.state--unavailable {
-  pointer-events: none;
-  cursor: not-allowed;
-  path {
-    filter: grayscale(100%);
-  }
+.ab__btn-base.state--available {
+  pointer-events: all;
+  cursor: pointer;
+  filter: none;
 }

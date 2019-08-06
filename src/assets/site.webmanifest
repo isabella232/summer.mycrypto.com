@@ -1,6 +1,6 @@
 {
-    "name": "MyCrypto",
-    "short_name": "MyCrypto",
+    "name": "MyCryptoSummer",
+    "short_name": "MyCryptoSummer",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,8 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
-    "start_url": "https://summer.mycrypto.com",
+    "theme_color": "#057a97",
+    "background_color": "#057a97",
     "display": "standalone"
 }

@@ -104,7 +104,7 @@
                 </g>
             </g>
         </mask>
-        <filter id="dropshadow" width="200" height="200" name="dropshadow">
+        <filter id="dropshadow" width="200%" height="200%" name="dropshadow">
             <feOffset result="offOut" dx="1" dy="2" in="SourceGraphic" />
             <feColorMatrix result="matrixOut" values="0 0.6 0 0 0 0 0.6 0 0 0 0 0.6 0 0 0 0 0.6 0 2 0" in="offOut" />
             <feGaussianBlur result="blurOut" stdDeviation="3" in="matrixOut" />
@@ -113,7 +113,7 @@
             <stop offset="0" stop-color="#00a9d3" />
             <stop offset="1" stop-color="#057a97" />
         </linearGradient>
-        <filter id="f1" width="200" height="200" name="f1">
+        <filter id="f1" width="200%" height="200%" name="f1">
             <feOffset result="offOut" dy="3" in="SourceAlpha" />
             <feGaussianBlur result="blurOut" stdDeviation="4" in="offOut" />
             <feComponentTransfer>

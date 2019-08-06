@@ -1,6 +1,6 @@
 <svg class="week__progress--1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1923.3 275.15">
     <defs>
-        <filter id="week__progress-shadow" width="200" height="200" name="week__progress-shadow">
+        <filter id="week__progress-shadow" width="200%" height="200%" name="week__progress-shadow">
             <feOffset result="offOut" dx="3" dy="4" in="SourceAlpha" />
             <feGaussianBlur result="blurOut" stdDeviation="10" in="offOut" />
             <feComponentTransfer>
@@ -33,7 +33,7 @@
             <stop offset="0" stop-color="#be914a" />
             <stop offset="1" stop-color="#a08f68" />
         </linearGradient>
-        <filter id="f1" width="200" height="200" name="f1">
+        <filter id="f1" width="200%" height="200%" name="f1">
             <feOffset result="offOut" dx="1" dy="2" in="SourceAlpha" />
             <feGaussianBlur result="blurOut" stdDeviation="4" in="offOut" />
             <feComponentTransfer>

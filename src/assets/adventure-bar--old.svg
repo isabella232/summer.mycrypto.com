@@ -1,6 +1,6 @@
 <svg class="adventure-bar__base" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2332.75 374.14">
     <defs>
-        <filter id="ab-dropshadow-2" width="200" height="200" name="ab-dropshadow-2">
+        <filter id="ab-dropshadow-2" width="200%" height="200%" name="ab-dropshadow-2">
             <feOffset result="offOut" dx="3" dy="4" in="SourceAlpha" />
             <feGaussianBlur result="blurOut" stdDeviation="10" in="offOut" />
             <feComponentTransfer>
@@ -33,7 +33,7 @@
             <stop offset="0" stop-color="#be914a" />
             <stop offset="1" stop-color="#a08f68" />
         </linearGradient>
-        <filter id="ab-dropshadow-1" width="200" height="200" name="ab-dropshadow-1">
+        <filter id="ab-dropshadow-1" width="200%" height="200%" name="ab-dropshadow-1">
             <feOffset result="offOut" dx="1" dy="2" in="SourceAlpha" />
             <feGaussianBlur result="blurOut" stdDeviation="4" in="offOut" />
             <feComponentTransfer>

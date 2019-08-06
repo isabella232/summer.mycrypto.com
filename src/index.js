@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // GLOBAL
 
-// TODO: Note to future self: change these each week!
+/* TODO EACH WEEK: CHANGE TO NEXT NUMBER */
 const week2Available = false
 const week3Available = false
 const week4Available = false
@@ -38,6 +38,11 @@ const treasureAvailab       = document.getElementsByClassName('secret-treasure--
 const treasureClaimed       = document.getElementsByClassName('secret-treasure--flag')[0]
 const treasureUnavail       = document.getElementsByClassName('secret-treasure--unavailable')[0]
 
+const abWeek1Complete       = document.getElementsByClassName('ab__week1-complete')[0]
+const abWeek2Complete       = document.getElementsByClassName('ab__week2-complete')[0]
+const abWeek3Complete       = document.getElementsByClassName('ab__week3-complete')[0]
+const abWeek4Complete       = document.getElementsByClassName('ab__week4-complete')[0]
+
 const allCharItems          = document.querySelectorAll( '.character__wrapper .item')
 const allClaimTreasureItems = document.querySelectorAll('[data-action="claim-treasure"]')
 const allCurrentWeekSteps   = document.querySelectorAll('[data-weekstep="' + weekStep + '"]')
@@ -51,10 +56,23 @@ const allMapHighlights      = document.getElementsByClassName('m__hover')
 
 
 // Detect Brave
-const ua         = window.navigator.userAgent.toLowerCase()
-const isChrome   = /chrome|crios/.test(ua) && ! /edge|opr\//.test(ua)
-const hasPlugins = navigator.plugins.length > 0
+const ua            = window.navigator.userAgent.toLowerCase()
+const isChrome      = /chrome|crios/.test(ua) && ! /edge|opr\//.test(ua)
+const plugins       = navigator.plugins
+const pluginsObject = plugins
+const hasPlugins    = plugins.length > 0
+
 var isBrave
+
+const twoPlugins=(o)=> {
+  if (plugins.length === 2) {
+    if (plugins[0].name ==="Chrome PDF Plugin" && plugins[1].name==="Chrome PDF Viewer") {
+      return true
+    }
+  } else {
+    return false
+  }
+}
 
 const testForAdBlocker = function(callback) {
     const img = new Image
@@ -69,29 +87,34 @@ const testForAdBlocker = function(callback) {
 
 testForAdBlocker(function( blocksAds ) {
     if(isChrome) {                                            // chrome ua narrows to brave and chrome
-        if(!hasPlugins) {                                     // chrome desktop always has plugins. narrows to brave and chrome mobile
+        if(!hasPlugins) {                                     // chrome desktop always has plugins, brave doesnt (usually)
             if(blocksAds) {                                   // chrome mobile doesnt block ads. narrows to brave
                 localStorage.setItem("isUsingBrave", true)
                 isBrave = true
                 if (document.body.classList.contains('home')) unburyTreasure()
-                  _paq.push(['trackEvent', 'isBrave', 'true']);
+                _paq.push(['trackEvent', 'Brave Custom', 'Brave']);
             } else {
                 localStorage.setItem("isUsingBrave", false)
                 isBrave = false
                 if (document.body.classList.contains('home')) unburyTreasure()
-                  _paq.push(['trackEvent', 'isBrave', 'false']);
+                _paq.push(['trackEvent', 'Brave Custom', 'Chrome Mobile']);
             }
+        } else if (plugins.length===2 && twoPlugins) {        // brave nightly has plugins
+            localStorage.setItem("isUsingBrave", true)
+            const isBrave = true
+            if (document.body.classList.contains('home')) unburyTreasure()
+            _paq.push(['trackEvent', 'Brave Custom', 'Brave Nightly']);
         } else {
             localStorage.setItem("isUsingBrave", false)
             isBrave = false
             if (document.body.classList.contains('home')) unburyTreasure()
-              _paq.push(['trackEvent', 'isBrave', 'false']);
+            _paq.push(['trackEvent', 'Brave Custom', 'Chrome Desktop']);
         }
     } else {
         localStorage.setItem("isUsingBrave", false)
         isBrave = false
         if (document.body.classList.contains('home')) unburyTreasure()
-          _paq.push(['trackEvent', 'isBrave', 'false']);
+        _paq.push(['trackEvent', 'Brave Custom', 'Random Other Browser']);
     }
 })
 
@@ -125,18 +148,23 @@ _paq.push([ 'trackEvent', 'Latest User Week', latestUserWeek ])
 chooseCharacter( characterChoice )
 
 // onload: display the stuff for the current week
-displayMap( latestUserWeek + 1 )
+let newWeek = parseInt(latestUserWeek) + 1
+if (newWeek > 4) {
+  latestUserWeek = 4
+  newWeek = 4
+}
 
-// onload: fill in recent weeks
+displayMap( newWeek )
+
 
 // onload: change the adventure bar to have the users curent week
 if(adventureBtnBase) updateAdventureBar( latestUserWeek )
+
 if(week2Available && mapWeek2) mapWeek2.classList.add("state--available")
 if(week3Available && mapWeek3) mapWeek3.classList.add("state--available")
 if(week4Available && mapWeek4) mapWeek4.classList.add("state--available")
 
 // update home button on click
-let newWeek = parseInt(latestUserWeek) + 1
 if(adventureBtnBase) {
     adventureBtnBase.addEventListener('click', function(){
       window.location="week-"+newWeek+".html"
@@ -144,13 +172,53 @@ if(adventureBtnBase) {
     } )
     adventureBtnBase.classList.add("state--week-" + newWeek)
 
-  if(week2Available || newWeek===2) adventureBtnBase.classList.add("state--unavailable")
-  if(week3Available || newWeek===3) adventureBtnBase.classList.add("state--unavailable")
-  if(week4Available || newWeek===4) adventureBtnBase.classList.add("state--unavailable")
+  /* TODO EACH WEEK: CHANGE TO NEXT NUMBER */
+  if( (newWeek===4 && week4Available) || (newWeek===3 && week3Available) || (newWeek===2 && week2Available) || (latestUserWeek === 0) ) {
+    adventureBtnBase.classList.add("state--available")
+  }
 
 }
 
+// turn rewards buttons on
+if(abWeek1Complete && latestUserWeek >= 1) {
+  abWeek1Complete.style.cursor = 'pointer'
+  abWeek1Complete.addEventListener('click', function(){
+    if (JSON.parse(localStorage.getItem("item__1-1"))) { showSuccessModal('1','1') }
+    else if (JSON.parse(localStorage.getItem("item__1-2"))) { showSuccessModal('1','2') }
+    else if (JSON.parse(localStorage.getItem("item__1-3"))) { showSuccessModal('1','3') }
+    _paq.push([ 'trackEvent', 'Clicked: Adventure Reward (Home)', 'Week 1' ]);
+  } )
+}
 
+if(abWeek2Complete && latestUserWeek >= 2) {
+  abWeek2Complete.style.cursor = 'pointer'
+  abWeek2Complete.addEventListener('click', function(){
+    if (JSON.parse(localStorage.getItem("item__2-1"))) { showSuccessModal('2','1') }
+    else if (JSON.parse(localStorage.getItem("item__2-2"))) { showSuccessModal('2','2') }
+    else if (JSON.parse(localStorage.getItem("item__2-3"))) { showSuccessModal('2','3') }
+    _paq.push([ 'trackEvent', 'Clicked: Adventure Reward (Home)', 'Week 2' ]);
+  } )
+}
+
+if(abWeek3Complete && latestUserWeek >= 3) {
+  abWeek3Complete.style.cursor = 'pointer'
+  abWeek3Complete.addEventListener('click', function(){
+    if (JSON.parse(localStorage.getItem("item__3-1"))) { showSuccessModal('3','1') }
+    else if (JSON.parse(localStorage.getItem("item__3-2"))) { showSuccessModal('3','2') }
+    else if (JSON.parse(localStorage.getItem("item__3-3"))) { showSuccessModal('3','3') }
+    _paq.push([ 'trackEvent', 'Clicked: Adventure Reward (Home)', 'Week 3' ]);
+  } )
+}
+
+if(abWeek4Complete && latestUserWeek >= 4) {
+  abWeek4Complete.style.cursor = 'pointer'
+  abWeek4Complete.addEventListener('click', function(){
+    if (JSON.parse(localStorage.getItem("item__4-1"))) { showSuccessModal('4','1') }
+    else if (JSON.parse(localStorage.getItem("item__4-2"))) { showSuccessModal('4','2') }
+    else if (JSON.parse(localStorage.getItem("item__4-3"))) { showSuccessModal('4','3') }
+    _paq.push([ 'trackEvent', 'Clicked: Adventure Reward (Home)', 'Week 4' ]);
+  } )
+}
 
 // onclick: change female <> male
 if(characterChoiceBtn) characterChoiceBtn.addEventListener('click', toggleCharacter)
