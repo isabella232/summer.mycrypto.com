@@ -16,7 +16,8 @@
     height: auto;
   }
   @include bp(screen-sm) {
-    display: none;
+    width: 55vw;
+    margin: 0 auto;
   }
 }
 
@@ -27,18 +28,29 @@
   text-align: center;
   width: 100%;
   height: auto;
+  display: flex;
   svg {
     width: 100%;
     height: auto;
-  }
-  @include bp(screen-sm-min) {
-    display: flex;
   }
 }
 
 .map__background {
   width: 98%;
   height: auto;
+  display: none;
+  @include bp(screen-sm-min) {
+    display: block;
+  }
+}
+
+.map__background--mobile {
+  width: 98%;
+  height: auto;
+  display: block;
+  @include bp(screen-sm-min) {
+    display: none;
+  }
 }
 
 .map__inner {
@@ -53,7 +65,8 @@
   display: none;
   @include bp(screen-sm) {
     width: 100%;
-    padding: 5vw;
+    padding: 5vw 15vw;
+    background-size: cover;
   }
   .map__week-text--available,
   .map__week-button--available {
@@ -110,7 +123,7 @@
     width: 14vw;
     height: auto;
     @include bp(screen-sm) {
-      width: 40vw;
+      width: 50vw;
     }
   }
   &.map__week-button--1-available {
@@ -162,32 +175,50 @@
 .m__highlight-1,
 .m__highlight-2,
 .m__highlight-3,
-.m__highlight-4 {
+.m__highlight-4,
+.mm__highlight-1,
+.mm__highlight-2,
+.mm__highlight-3,
+.mm__highlight-4 {
   opacity: 0;
   transition: opacity 100ms ease;
 }
 .m__flag-1,
 .m__flag-2,
 .m__flag-3,
-.m__flag-4 {
+.m__flag-4,
+.mm__flag-1,
+.mm__flag-2,
+.mm__flag-3,
+.mm__flag-4 {
   //transform: scale(1);
   transition: transform 100ms ease;
 }
 
 .m__hover.state--selected,
-.m__hover:hover {
+.m__hover:hover,
+.mm__hover.state--selected,
+.mm__hover:hover {
   cursor: pointer;
   .m__highlight-1,
   .m__highlight-2,
   .m__highlight-3,
-  .m__highlight-4 {
+  .m__highlight-4,
+  .mm__highlight-1,
+  .mm__highlight-2,
+  .mm__highlight-3,
+  .mm__highlight-4 {
     opacity: 0.7;
     transition: opacity 100ms ease;
   }
   .m__flag-1,
   .m__flag-2,
   .m__flag-3,
-  .m__flag-4 {
+  .m__flag-4,
+  .mm__flag-1,
+  .mm__flag-2,
+  .mm__flag-3,
+  .mm__flag-4 {
     //transform: scale(1.01);
     transition: transform 100ms ease;
   }

@@ -6,24 +6,45 @@ document.addEventListener("DOMContentLoaded", () => {
 // GLOBAL
 
 /* TODO EACH WEEK: CHANGE TO NEXT NUMBER */
-const week2Available = false
+const week2Available = true
 const week3Available = false
 const week4Available = false
 
 let weekStep = 1
 
 // ELEMENTS AND SHIT
-const adventureBtnArrow     = document.getElementsByClassName('ab__btn-arrow')[0]
-const adventureBtnBase      = document.getElementsByClassName('ab__btn-base')[0]
-const adventureBtnComplete  = document.getElementsByClassName('ab__btn-complete')[0]
-const adventureBtnContinue  = document.getElementsByClassName('ab__btn-continue')[0]
-const adventureBtnStart     = document.getElementsByClassName('ab__btn-start')[0]
-const characterChoiceBtn    = document.getElementsByClassName('character-choice__button')[0]
-const characterWrapper      = document.getElementsByClassName('character__wrapper')[0]
-const mapHighlight1         = document.getElementsByClassName('m__hover-1')[0]
-const mapHighlight2         = document.getElementsByClassName('m__hover-2')[0]
+const adventureBtnArrow      = document.getElementsByClassName('ab__btn-arrow')[0]
+const adventureBtnBase       = document.getElementsByClassName('ab__btn-base')[0]
+const adventureBtnComplete   = document.getElementsByClassName('ab__btn-complete')[0]
+const adventureBtnContinue   = document.getElementsByClassName('ab__btn-continue')[0]
+const adventureBtnStart      = document.getElementsByClassName('ab__btn-start')[0]
+const abWeek1Complete        = document.getElementsByClassName('ab__week1-complete')[0]
+const abWeek2Complete        = document.getElementsByClassName('ab__week2-complete')[0]
+const abWeek3Complete        = document.getElementsByClassName('ab__week3-complete')[0]
+const abWeek4Complete        = document.getElementsByClassName('ab__week4-complete')[0]
+
+
+const abmArrow               = document.getElementsByClassName('abm__btn-arrow')[0]
+const abmBase                = document.getElementsByClassName('abm__btn-base')[0]
+const abmComplete            = document.getElementsByClassName('abm__btn-complete')[0]
+const abmContinue            = document.getElementsByClassName('abm__btn-continue')[0]
+const abmStart               = document.getElementsByClassName('abm__btn-start')[0]
+const abmWeek1Complete       = document.getElementsByClassName('abm__week1-complete')[0]
+const abmWeek2Complete       = document.getElementsByClassName('abm__week2-complete')[0]
+const abmWeek3Complete       = document.getElementsByClassName('abm__week3-complete')[0]
+const abmWeek4Complete       = document.getElementsByClassName('abm__week4-complete')[0]
+
+
+const characterChoiceBtn     = document.getElementsByClassName('character-choice__button')[0]
+const characterWrapper       = document.getElementsByClassName('character__wrapper')[0]
+const mapHighlight1          = document.getElementsByClassName('m__hover-1')[0]
+const mapHighlight2          = document.getElementsByClassName('m__hover-2')[0]
 const mapHighlight3         = document.getElementsByClassName('m__hover-3')[0]
 const mapHighlight4         = document.getElementsByClassName('m__hover-4')[0]
+const mmHighlight1          = document.getElementsByClassName('mm__hover-1')[0]
+const mmHighlight2          = document.getElementsByClassName('mm__hover-2')[0]
+const mmHighlight3         = document.getElementsByClassName('mm__hover-3')[0]
+const mmHighlight4         = document.getElementsByClassName('mm__hover-4')[0]
 const mapWeek2              = document.getElementsByClassName('map--2')[0]
 const mapWeek3              = document.getElementsByClassName('map--3')[0]
 const mapWeek4              = document.getElementsByClassName('map--4')[0]
@@ -38,11 +59,6 @@ const treasureAvailab       = document.getElementsByClassName('secret-treasure--
 const treasureClaimed       = document.getElementsByClassName('secret-treasure--flag')[0]
 const treasureUnavail       = document.getElementsByClassName('secret-treasure--unavailable')[0]
 
-const abWeek1Complete       = document.getElementsByClassName('ab__week1-complete')[0]
-const abWeek2Complete       = document.getElementsByClassName('ab__week2-complete')[0]
-const abWeek3Complete       = document.getElementsByClassName('ab__week3-complete')[0]
-const abWeek4Complete       = document.getElementsByClassName('ab__week4-complete')[0]
-
 const allCharItems          = document.querySelectorAll( '.character__wrapper .item')
 const allClaimTreasureItems = document.querySelectorAll('[data-action="claim-treasure"]')
 const allCurrentWeekSteps   = document.querySelectorAll('[data-weekstep="' + weekStep + '"]')
@@ -53,6 +69,7 @@ const allWeekSteps          = document.querySelectorAll('[data-weekstep]')
 
 const allMapContents        = document.getElementsByClassName('map__inner')
 const allMapHighlights      = document.getElementsByClassName('m__hover')
+const allMMHighlights      = document.getElementsByClassName('mm__hover')
 
 
 // Detect Brave
@@ -158,23 +175,30 @@ displayMap( newWeek )
 
 
 // onload: change the adventure bar to have the users curent week
-if(adventureBtnBase) updateAdventureBar( latestUserWeek )
+if(adventureBtnBase || abmBase) updateAdventureBar( latestUserWeek )
 
 if(week2Available && mapWeek2) mapWeek2.classList.add("state--available")
 if(week3Available && mapWeek3) mapWeek3.classList.add("state--available")
 if(week4Available && mapWeek4) mapWeek4.classList.add("state--available")
 
 // update home button on click
-if(adventureBtnBase) {
+if(adventureBtnBase || abmBase) {
+
     adventureBtnBase.addEventListener('click', function(){
       window.location="week-"+newWeek+".html"
       _paq.push([ 'trackEvent', 'Clicked: Adventure Button', newWeek ]);
     } )
-    adventureBtnBase.classList.add("state--week-" + newWeek)
+    abmBase.addEventListener('click', function(){
+      window.location="week-"+newWeek+".html"
+      _paq.push([ 'trackEvent', 'Clicked: Adventure Button', newWeek ]);
+    } )
 
-  /* TODO EACH WEEK: CHANGE TO NEXT NUMBER */
+    adventureBtnBase.classList.add("state--week-" + newWeek)
+    abmBase.classList.add("state--week-" + newWeek)
+
   if( (newWeek===4 && week4Available) || (newWeek===3 && week3Available) || (newWeek===2 && week2Available) || (latestUserWeek === 0) ) {
     adventureBtnBase.classList.add("state--available")
+    abmBase.classList.add("state--available")
   }
 
 }
@@ -229,6 +253,11 @@ if(mapHighlight2) mapHighlight2.addEventListener('click', function(){ displayMap
 if(mapHighlight3) mapHighlight3.addEventListener('click', function(){ displayMap(3) } )
 if(mapHighlight4) mapHighlight4.addEventListener('click', function(){ displayMap(4) } )
 
+if(mmHighlight1) mmHighlight1.addEventListener('click', function(){ displayMap(1) } )
+if(mmHighlight2) mmHighlight2.addEventListener('click', function(){ displayMap(2) } )
+if(mmHighlight3) mmHighlight3.addEventListener('click', function(){ displayMap(3) } )
+if(mmHighlight4) mmHighlight4.addEventListener('click', function(){ displayMap(4) } )
+
 // onclick: have primary home button go to most recent page
 if(characterChoiceBtn) characterChoiceBtn.addEventListener('click', toggleCharacter)
 
@@ -249,13 +278,13 @@ allClaimTreasureItems.forEach((item) => {
 
 if(allWeekItems) {
     allWeekItems.forEach(weekItem => {
-        weekItem.addEventListener('mouseover', function(){ selectItem( 1, this.getAttribute('data-item'), false, this.getAttribute('data-href') ) })
+        weekItem.addEventListener('mouseover', function(){ selectItem( this.getAttribute('data-week'), this.getAttribute('data-item'), false, this.getAttribute('data-href') ) })
     })
     allWeekItems.forEach(weekItem => {
-        weekItem.addEventListener('click', function(){ selectItem( 1, this.getAttribute('data-item'), false, this.getAttribute('data-href') ) })
+        weekItem.addEventListener('click', function(){ selectItem( this.getAttribute('data-week'), this.getAttribute('data-item'), false, this.getAttribute('data-href') ) })
     })
     allWeekButtons.forEach(weekButton => {
-        weekButton.addEventListener('click', function(){ selectItem( 1, this.getAttribute('data-item'), true, this.getAttribute('data-href') ) })
+        weekButton.addEventListener('click', function(){ selectItem( this.getAttribute('data-week'), this.getAttribute('data-item'), true, this.getAttribute('data-href') ) })
     })
 }
 
@@ -298,9 +327,11 @@ function displayMap(weekNumber) {
         if ( allMapContents[i].classList.contains('map--'+weekNumber) ) {
             allMapContents[i].classList.add('state--selected')
             allMapHighlights[i].classList.add('state--selected')
+            allMMHighlights[i].classList.add('state--selected')
         } else {
             allMapContents[i].classList.remove('state--selected')
             allMapHighlights[i].classList.remove('state--selected')
+            allMMHighlights[i].classList.remove('state--selected')
         }
     }
     _paq.push([ 'trackEvent', 'Clicked Map Week', weekNumber ]);
@@ -312,19 +343,31 @@ function updateAdventureBar(latestUserWeek) {
         for (var j = 0 ; j < document.querySelectorAll('.ab__complete--'+i).length ; j++) {
             document.querySelectorAll('.ab__complete--'+i)[j].style.display = 'block'
         }
+        for (var j = 0 ; j < document.querySelectorAll('.abm__complete--'+i).length ; j++) {
+            document.querySelectorAll('.abm__complete--'+i)[j].style.display = 'block'
+        }
     }
     adventureBtnComplete.style.display = 'none'
+    abmComplete.style.display = 'none'
     adventureBtnContinue.style.display = 'none'
+    abmContinue.style.display = 'none'
     adventureBtnStart.style.display = 'none'
+    abmStart.style.display = 'none'
     if (latestUserWeek >= 4) {
         adventureBtnComplete.style.display = 'block'
+        abmComplete.style.display = 'block'
         adventureBtnArrow.style.display = 'none'
+        abmArrow.style.display = 'none'
     } else if (latestUserWeek >= 1 && latestUserWeek < 4) {
         adventureBtnContinue.style.display = 'block'
+        abmContinue.style.display = 'block'
         adventureBtnArrow.style.display = 'block'
+        abmArrow.style.display = 'block'
     } else {
         adventureBtnStart.style.display = 'block'
+        abmStart.style.display = 'block'
         adventureBtnArrow.style.display = 'block'
+        abmArrow.style.display = 'block'
     }
 }
 
@@ -387,6 +430,12 @@ function selectItem(weekNum, itemNum, persist, successURL) {
 
     _paq.push([ 'trackEvent', 'Item: Hover', weekNum + '-' + itemNum ]);
 
+    console.log('.character__wrapper .item__' + weekNum + '-1')
+    console.log(weekNum)
+    console.log(itemNum)
+    console.log(successURL)
+    console.log(itemClass)
+
     document.querySelector( '.character__wrapper .item__' + weekNum + '-1').style.opacity = 0
     document.querySelector( '.character__wrapper .item__' + weekNum + '-2').style.opacity = 0
     document.querySelector( '.character__wrapper .item__' + weekNum + '-3').style.opacity = 0
@@ -439,6 +488,21 @@ function showSuccessModal(weekNum, itemNum, successURL) {
         case 'item__1-3':
             modalText.innerHTML = 'You received the <strong>Umbrella Hat</strong> for selecting the <strong>Read EthHub</strong> option!'
             modalButton.href = 'https://twitter.com/intent/tweet?text=I%E2%80%99m%20on%20my%20way%20to%20discovering%20The%20Land%20Of%20Magical%20Internet%20Money%20with%20my%20trusty%20Umbrella%20Hat%2C%20thanks%20to%20%23MyCryptoSummer!%20Start%20your%20adventure%20now%20at%20https%3A%2F%2Fsummer.mycrypto.com%20%40MyCrypto%0A'
+            _paq.push([ 'trackEvent', 'Item: Saw Modal', weekNum + '-' + itemNum ]);
+            break;
+        case 'item__2-1':
+            modalText.innerHTML = 'You received the <strong>Cutlass</strong> for <strong>Downloading the MyCrypto Desktop App</strong>!'
+            modalButton.href = 'https://twitter.com/intent/tweet?text=I%20chose%20th%27%20Pirate%20Cutlass%20t%27%20help%20me%20fight%20off%20th%27%20this%20vicious%20creature%20during%20%23MyCryptoSummer!%20%0A%0ATh%27%20adventure%20continues%20and%20prizes%20will%20be%20won%20at%20https%3A%2F%2Fsummer.mycrypto.com%20%40MyCrypto'
+            _paq.push([ 'trackEvent', 'Item: Saw Modal', weekNum + '-' + itemNum ]);
+            break;
+        case 'item__2-2':
+            modalText.innerHTML = 'You received the <strong>Water Blaster</strong> for <strong>buying some crypto on Coinbase</strong>!'
+            modalButton.href = 'https://twitter.com/intent/tweet?text=My%20new%20Water%20Blaster%20will%20blast%20away%20the%20the%20Security%20Enhancement%20Calamari%20during%20%23MyCryptoSummer!%0A%0AContinue%20your%20adventure%20and%20win%20prizes%20at%20https%3A%2F%2Fsummer.mycrypto.com%20%40MyCrypto'
+            _paq.push([ 'trackEvent', 'Item: Saw Modal', weekNum + '-' + itemNum ]);
+            break;
+        case 'item__2-3':
+            modalText.innerHTML = 'You received the <strong>Spicy Cocktail</strong> for checking out some sweet, sweet <strong>hardware wallets</strong>!'
+            modalButton.href = 'https://twitter.com/intent/tweet?text=This%20%E2%80%9CSpicy%20Cocktail%E2%80%9D%20will%20help%20me%20defeat%20the%20kraken%20that%20I%E2%80%99ve%20discovered%20on%20%23MyCryptoSummer!%20%0A%0AContinue%20your%20adventure%20and%20win%20prizes%20at%20https%3A%2F%2Fsummer.mycrypto.com%20%40MyCrypto'
             _paq.push([ 'trackEvent', 'Item: Saw Modal', weekNum + '-' + itemNum ]);
             break;
     }

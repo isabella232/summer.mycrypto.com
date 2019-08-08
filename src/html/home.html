@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MyCryptoSummer</title>
-  <meta name="description" content="Learn more about blockchain and cryptocurrency in a fun, digestible manner! Brought to you by MyCrypto and Brave." />
+  <meta name="description" content="Learn more about blockchain and cryptocurrency in a fun, digestible manner! Brought to you by MyCrypto" />
   <meta property="og:title" content="MyCryptoSummer" />
-  <meta property="og:description" content="Learn more about blockchain and cryptocurrency in a fun, digestible manner! Brought to you by MyCrypto and Brave." />
+  <meta property="og:description" content="Learn more about blockchain and cryptocurrency in a fun, digestible manner! Brought to you by MyCrypto" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://summer.mycrypto.com/" />
   <meta property="og:image" content="https://summer.mycrypto.com/mycryptosummer-og.png" />
   <meta name="twitter:title" content="#MyCryptoSummer">
-  <meta name="twitter:description" content="Learn more about blockchain and cryptocurrency in a fun, digestible manner! Brought to you by MyCrypto and Brave.">
+  <meta name="twitter:description" content="Learn more about blockchain and cryptocurrency in a fun, digestible manner! Brought to you by MyCrypto">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@MyCrypto">
   <meta name="twitter:creator" content="@MyCrypto">
@@ -88,6 +88,11 @@
         <div class="adventure-bar__wrapper">
           <img inline class="adventure-bar__base" width="750" height="97" src="src/assets/adventure-bar.svg" alt="Adventure Progress Bar">
         </div>
+
+        <div class="adventure-bar__wrapper--mobile">
+          <img inline src="src/assets/adventure-bar--mobile.svg">
+        </div>
+
       </section>
 
     </section>
@@ -104,6 +109,7 @@
 
     <section class="map__wrapper">
       <img inline src="src/assets/map__main-bg.svg" alt="Adventure Map Background">
+      <img inline src="src/assets/map__main-bg--mobile.svg" alt="Adventure Map Background">
 
       <!-- Week 1 -->
       <article class="map__inner map--1">
@@ -120,7 +126,7 @@
         <div class="map__week-button map__week-button--1-available">
           <a class="sr-only" href="week-1.html">Start Your Adventure</a>
           <a href="week-1.html">
-            <img width="156" height="54" src="<%= require('../assets/map__week-button--1-available.svg') %>" alt="Start Your Adventure">
+            <img width="156" height="54" src="<%= require('../assets/map__week-button--1-available.svg') %>" alt="Start Your Adventure" style="-webkit-transform: translateZ(0)" >
           </a>
         </div>
       </article>
@@ -149,7 +155,7 @@
         </div>
         <div class="map__week-button map__week-button--unavailable">
           <span class="sr-only">Coming Soon!</span>
-          <img width="156" height="54" src="<%= require('../assets/map__week-button--23-unavailable.svg') %>" alt="Coming Soon!">
+          <img style="-webkit-transform: translateZ(0)" width="156" height="54" src="<%= require('../assets/map__week-button--23-unavailable.svg') %>" alt="Coming Soon!">
         </div>
       </article>
 
@@ -160,7 +166,7 @@
           <img class="map__week-title--3" src="<%= require('../assets/map__week-title--3.svg') %>" width="90" height="27" alt="Adventure Map Week 3 Title">
         </h3>
         <p class="map__week-text map__week-text--available">
-          TODO: Week 3 Text Goes Here
+          Week 3 Text Goes Here
         </p>
         <p class="map__week-text map__week-text--unavailable">
           This part of the adventure will become available during the third week of August. Come back soon!
@@ -173,7 +179,7 @@
             <img width="156" height="54" src="<%= require('../assets/map__week-button--23-available.svg') %>" alt="Continue Your Adventure">
           </a>
         </div>
-        <div class="map__week-button map__week-button--unavailable">
+        <div style="-webkit-transform: translateZ(0)" class="map__week-button map__week-button--unavailable">
           <span class="sr-only">Coming Soon!</span>
           <img width="156" height="54" src="<%= require('../assets/map__week-button--23-unavailable.svg') %>" alt="Coming Soon!">
         </div>

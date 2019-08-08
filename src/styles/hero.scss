@@ -50,6 +50,8 @@ body.home {
   width: 38%;
   @include bp(screen-sm) {
     width: 100%;
+    background: #ffffffba;
+    padding: 5vw;
   }
 }
 
@@ -120,7 +122,7 @@ body.home {
   }
   position: relative;
   height: 109px;
-  top: 5vh;
+  top: 36vw;
 }
 
 .secret-treasure__tooltip {
@@ -160,12 +162,11 @@ body.home {
     z-index: -1;
   }
   @include bp(screen-sm) {
-    width: 36vw;
+    width: 35vw;
     position: absolute;
-    right: 10vw;
-    bottom: -10vh;
-    left: auto;
-    top: auto;
+    right: 12vw;
+    left: unset;
+    top: unset;
   }
 }
 
@@ -175,13 +176,13 @@ body.home {
   top: 0;
   cursor: pointer;
   transition: transform 50ms ease;
+  -webkit-transform: translateZ(0);
   &:hover {
     transform: rotate(1deg) scale(1.05);
     transition: transform 50ms ease;
   }
   @include bp(screen-sm) {
     left: auto;
-    top: 10vh;
     right: 5vw;
     width: 35vw;
     z-index: 100;
@@ -195,6 +196,7 @@ body.home {
   pointer-events: all;
   cursor: pointer;
   transition: opacity ease 100ms;
+  -webkit-transform: translateZ(0);
 }
 
 .secret-treasure--available {
@@ -209,7 +211,6 @@ body.home {
   }
   @include bp(screen-sm) {
     left: auto;
-    top: 10vh;
     right: 5vw;
     width: 35vw;
     z-index: 100;
@@ -222,11 +223,11 @@ body.home {
   top: -7rem;
   width: 90px;
   height: auto;
-
   @include bp(screen-sm) {
-    right: 0;
-    left: auto;
-    top: 7vh;
+    width: 50px;
+    right: 7vw;
+    left: unset;
+    top: -4vh;
   }
 }
 
@@ -258,7 +259,8 @@ body.home {
     top: -2vw;
   }
   @include bp(screen-sm) {
-    width: 50vw;
+    width: 58vw;
+    top: 3vh;
   }
 }
 
@@ -270,7 +272,7 @@ body.home {
     width: 13vw;
   }
   @include bp(screen-sm) {
-    width: 35vw;
+    width: 39vw;
     position: relative;
     top: 5vh;
   }
@@ -347,58 +349,91 @@ body.home {
 }
 
 .adventure-bar__wrapper {
-  @include bp(screen-sm-min) {
-    right: 1vw;
-    top: 46vw;
-    width: 63vw;
-    position: absolute;
+  right: 1vw;
+  top: 46vw;
+  width: 63vw;
+  position: absolute;
+  @include bp(screen-sm) {
+    display: none;
   }
 }
 
 .adventure-bar__base {
   width: 100%;
   height: auto;
+  -webkit-transform: translateZ(0);
 }
 
-.ab__btn-start {
+.ab__btn-start,
+.abm__btn-start {
   display: block;
 }
-.ab__btn-continue {
+.ab__btn-continue,
+.abm__btn-continue {
   display: none;
 }
-.ab__btn-complete {
+.ab__btn-complete,
+.abm__btn-complete {
   display: none;
 }
 
-.ab__btn-base {
-  filter: url(#grayscale);
+.ab__btn-base,
+.abm__btn-base {
   pointer-events: none;
   cursor: not-allowed;
   transition: transform 50ms ease;
   cursor: pointer;
-  .ab__btn {
+  .ab__btn,
+  .abm__week {
     transition: transform 50ms ease;
     pointer-events: none;
   }
   &:hover {
     transform: scale(1.02) translate(-4px, -4px);
     transition: transform 50ms ease;
-    .ab__btn {
+    .ab__btn,
+    .abm__week {
       transform: scale(1.01) translate(-2px, 0px);
       transition: transform 50ms ease;
     }
   }
 }
 
+.ab__btn-base {
+  filter: url(#grayscale);
+  -webkit-transform: translateZ(0);
+}
+.abm__btn-base {
+  filter: url(#abm__grayscale);
+  -webkit-transform: translateZ(0);
+}
+
 .ab__complete--1,
 .ab__complete--2,
 .ab__complete--3,
-.ab__complete--4 {
+.ab__complete--4,
+.abm__complete--1,
+.abm__complete--2,
+.abm__complete--3,
+.abm__complete--4 {
   display: none;
 }
 
-.ab__btn-base.state--available {
+.ab__btn-base.state--available,
+.abm__btn-base.state--available {
   pointer-events: all;
   cursor: pointer;
   filter: none;
+}
+
+.adventure-bar__wrapper--mobile {
+  text-align: center;
+}
+.adventure-bar--mobile {
+  width: 55vw;
+  height: auto;
+  -webkit-transform: translateZ(0);
+  @include bp(screen-sm-min) {
+    display: none;
+  }
 }
