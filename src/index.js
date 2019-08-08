@@ -50,6 +50,7 @@ const mapWeek3              = document.getElementsByClassName('map--3')[0]
 const mapWeek4              = document.getElementsByClassName('map--4')[0]
 const modal                 = document.getElementsByClassName('modal')[0]
 const modalButton           = document.getElementsByClassName('modal__button')[0]
+const modalButton2          = document.getElementsByClassName('modal__button-2')[0]
 const modalClose            = document.getElementsByClassName('modal__close')[0]
 const modalItem             = document.getElementsByClassName('modal__item')[0]
 const modalText             = document.getElementsByClassName('modal__text')[0]
@@ -492,7 +493,7 @@ function showSuccessModal(weekNum, itemNum, successURL) {
             break;
         case 'item__2-1':
             modalText.innerHTML = 'You received the <strong>Cutlass</strong> for <strong>Downloading the MyCrypto Desktop App</strong>!'
-            modalButton.href = 'https://twitter.com/intent/tweet?text=I%20chose%20th%27%20Pirate%20Cutlass%20t%27%20help%20me%20fight%20off%20th%27%20this%20vicious%20creature%20during%20%23MyCryptoSummer!%20%0A%0ATh%27%20adventure%20continues%20and%20prizes%20will%20be%20won%20at%20https%3A%2F%2Fsummer.mycrypto.com%20%40MyCrypto'
+            modalButton.href = 'https://twitter.com/intent/tweet?text=I%20chose%20th%27%20Pirate%20Cutlass%20t%27%20help%20me%20fight%20off%20th%27%20vicious%20creature%20during%20%23MyCryptoSummer!%20%0A%0ATh%27%20adventure%20continues%20and%20prizes%20will%20be%20won%20at%20https%3A%2F%2Fsummer.mycrypto.com%20%40MyCrypto'
             _paq.push([ 'trackEvent', 'Item: Saw Modal', weekNum + '-' + itemNum ]);
             break;
         case 'item__2-2':
@@ -523,6 +524,7 @@ modalClose.addEventListener('click', function() { closeModal() })
 
 function closeModal() {
     modal.classList.remove('open');
+    if (window.location.href!='https://summer.mycrypto.com/') window.location.href = '/';
     _paq.push([ 'trackEvent', 'Closed Modal via X', true ]);
 }
 

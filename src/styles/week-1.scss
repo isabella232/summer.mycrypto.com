@@ -66,16 +66,17 @@ body.week__2 {
   margin: 4vw auto 1vw;
   width: 55vw;
   min-height: 65vh;
-  padding: 5vw 4vw 2vw;
+  padding: 4vw 3vw 1vw;
   position: relative;
   @include bp(screen-sm) {
-    width: 92vw;
-    padding: 11vw 6vw 42vw 6vw;
+    margin: 7vh 7vw;
+    width: 86vw;
+    padding-bottom: 10vh;
   }
 }
 
 .week__2 .week__inner-wrapper {
-  margin-bottom: 30vh;
+  margin-bottom: 10vh;
 }
 
 .week__inner {
@@ -422,7 +423,7 @@ body.week__2 {
   }
   @include bp(screen-sm) {
     width: 100vw;
-    top: 3vh;
+    top: 8vh;
   }
 }
 .ill__week--2 {
@@ -434,12 +435,18 @@ body.week__2 {
 .week .week-ship__wrapper {
   position: absolute;
   left: 0;
-  top: 10vw;
+  top: 0;
   bottom: 0;
   width: 30vw;
   overflow: hidden;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
   .week-ship__image {
     margin-left: -4vw;
+    width: 100%;
+    height: auto;
+    margin-top: 10vh;
   }
   @include bp(screen-sm) {
     z-index: -1;
@@ -448,19 +455,34 @@ body.week__2 {
   }
 }
 
-.week.week__2 .character__wrapper .character {
-  width: 23vw;
-  height: auto;
+.week.week__2 .character__wrapper {
   position: absolute;
   left: 0;
-  bottom: auto;
-  top: 23vh;
+  top: 0;
+  bottom: 0;
+  width: 23vw;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
   @include bp(screen-sm) {
-    width: 53vw;
-    height: auto;
     position: fixed;
-    left: -11vw;
-    bottom: -7vh;
+    left: 0;
     top: auto;
+    bottom: 0;
+    width: 53vw;
+  }
+
+  .character {
+    width: 100%;
+    height: auto;
+    position: static;
+    left: auto;
+    bottom: auto;
+    top: auto;
+    @include bp(screen-sm) {
+      top: auto;
+      margin-left: -8vw;
+      margin-bottom: -10vh;
+    }
   }
 }
