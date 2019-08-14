@@ -139,6 +139,7 @@ body.home {
   opacity: 0;
   pointer-events: none;
   transition: opacity ease 100ms;
+  top: -7em;
   a,
   a:hover {
     color: white;
@@ -344,6 +345,20 @@ body.home {
   transition: opacity 100ms ease;
 }
 
+[data-state='female-selected'] .item--female {
+  display: block;
+}
+[data-state='male-selected'] .item--male {
+  display: block;
+}
+
+[data-state='male-selected'] .item--female {
+  display: none;
+}
+[data-state='female-selected'] .item--male {
+  display: none;
+}
+
 .item {
   opacity: 0;
 }
@@ -417,6 +432,7 @@ body.home {
 .abm__complete--3,
 .abm__complete--4 {
   display: none;
+  cursor: pointer;
 }
 
 .ab__btn-base.state--available,
@@ -436,4 +452,12 @@ body.home {
   @include bp(screen-sm-min) {
     display: none;
   }
+}
+
+.ab__week1-text,
+.ab__week2-text,
+.ab__week3-text,
+.ab__week4-text,
+.abm__week-text {
+  pointer-events: none;
 }

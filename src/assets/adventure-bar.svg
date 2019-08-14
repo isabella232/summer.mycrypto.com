@@ -168,10 +168,10 @@
     <g id="base-middle" style="filter:url(#ab-dropshadow-2)">
       <path d="M533.37,66.74l1605.75.53c-3.33-2.66,23.28-26.6,57.86-25.94,59.86,1.15,85.8,49.88,85.8,87.13,0,66-76.49,82.47-76.49,82.47-54.54-2.66-65.28-23.74-72.49-29.93L533.37,183.46c-28.3,0-51.24-26.13-51.24-58.36h0C482.13,92.86,505.07,66.74,533.37,66.74Z" transform="translate(-30.08 -36.38)" style="fill-rule:evenodd;fill:url(#ab-linear-gradient)" />
     </g>
-    <rect class="ab__complete--4" x="1689.4" y="40.87" width="403.7" height="96.77" style="fill:url(#ab-linear-gradient-2)" />
-    <rect class="ab__complete--3" x="1306.32" y="40.87" width="385.41" height="96.77" style="fill:url(#ab-linear-gradient-3)" />
-    <rect class="ab__complete--2" x="896.92" y="40.87" width="409.72" height="96.77" style="fill:url(#ab-linear-gradient-4)" />
-    <rect class="ab__complete--1" x="519.82" y="40.87" width="376.1" height="96.77" style="fill:url(#ab-linear-gradient-5)" />
+    <rect data-href="week-4.html" class="ab__complete--4" x="1689.4" y="40.87" width="403.7" height="96.77" style="fill:url(#ab-linear-gradient-2)" />
+    <rect data-href="week-3.html" class="ab__complete--3" x="1306.32" y="40.87" width="385.41" height="96.77" style="fill:url(#ab-linear-gradient-3)" />
+    <rect data-href="week-2.html" class="ab__complete--2" x="896.92" y="40.87" width="409.72" height="96.77" style="fill:url(#ab-linear-gradient-4)" />
+    <rect data-href="week-1.html" class="ab__complete--1" x="519.82" y="40.87" width="376.1" height="96.77" style="fill:url(#ab-linear-gradient-5)" />
     <path id="base-background" d="M2149.2,186.46H533.37a61.52,61.52,0,1,1,0-123H2149.2a61.52,61.52,0,0,1,0,123ZM533.37,84a41,41,0,1,0,0,81.92H2149.2a41,41,0,1,0,0-81.92Z" transform="translate(-30.08 -36.38)" style="fill:url(#ab-linear-gradient-6)" />
     <path id="base-border" d="M2149.2,186.46H533.37a61.52,61.52,0,1,1,0-123H2149.2a61.52,61.52,0,0,1,0,123ZM533.37,79.82a45.12,45.12,0,0,0,0,90.24H2149.2a45.12,45.12,0,1,0,0-90.24Z" transform="translate(-30.08 -36.38)" style="fill:url(#ab-linear-gradient-7)" />
   </g>

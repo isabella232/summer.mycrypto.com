@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* TODO EACH WEEK: CHANGE TO NEXT NUMBER */
 const week2Available = true
-const week3Available = false
+const week3Available = true
 const week4Available = false
 
 let weekStep = 1
@@ -51,6 +51,7 @@ const mapWeek4              = document.getElementsByClassName('map--4')[0]
 const modal                 = document.getElementsByClassName('modal')[0]
 const modalButton           = document.getElementsByClassName('modal__button')[0]
 const modalButton2          = document.getElementsByClassName('modal__button-2')[0]
+const modalAltCTA          = document.getElementsByClassName('modal__alt-cta')[0]
 const modalClose            = document.getElementsByClassName('modal__close')[0]
 const modalItem             = document.getElementsByClassName('modal__item')[0]
 const modalText             = document.getElementsByClassName('modal__text')[0]
@@ -370,7 +371,26 @@ function updateAdventureBar(latestUserWeek) {
         adventureBtnArrow.style.display = 'block'
         abmArrow.style.display = 'block'
     }
+
+    const desktopWeekButtons = document.querySelectorAll('.adventure-bar__base [data-href]')
+    const mobileWeekButtons = document.querySelectorAll('.adventure-bar--mobile [data-href]')
+
+    desktopWeekButtons.forEach((item) => {
+      item.addEventListener('click', function(){
+        window.location = item.getAttribute('data-href')
+      })
+    })
+
+    mobileWeekButtons.forEach((item) => {
+      item.addEventListener('click', function(){
+        window.location = item.getAttribute('data-href')
+      })
+    })
+
 }
+
+
+
 
 function unburyTreasure() {
     treasureAvailab.style.display = 'none'
@@ -430,12 +450,6 @@ function selectItem(weekNum, itemNum, persist, successURL) {
     let itemClass = 'item__' + weekNum + '-' + itemNum
 
     _paq.push([ 'trackEvent', 'Item: Hover', weekNum + '-' + itemNum ]);
-
-    console.log('.character__wrapper .item__' + weekNum + '-1')
-    console.log(weekNum)
-    console.log(itemNum)
-    console.log(successURL)
-    console.log(itemClass)
 
     document.querySelector( '.character__wrapper .item__' + weekNum + '-1').style.opacity = 0
     document.querySelector( '.character__wrapper .item__' + weekNum + '-2').style.opacity = 0
@@ -518,13 +532,19 @@ function showSuccessModal(weekNum, itemNum, successURL) {
         newTab.opener = null;
     }
 
+    modalButton.addEventListener('click', function(){
+      modalButton.style.display = 'none'
+      modalAltCTA.style.display = 'block'
+    } )
+
 }
 
 modalClose.addEventListener('click', function() { closeModal() })
 
 function closeModal() {
     modal.classList.remove('open');
-    if (window.location.href!='https://summer.mycrypto.com/') window.location.href = '/';
+      modalButton.style.display = 'block'
+      modalAltCTA.style.display = 'none'
     _paq.push([ 'trackEvent', 'Closed Modal via X', true ]);
 }
 

@@ -19,6 +19,13 @@ body.week__2 {
   padding-bottom: 0;
 }
 
+body.week__3 {
+  background-color: #047a97;
+  background-image: url('./../assets/week__bg--3-1.svg');
+  background-size: cover;
+  padding-bottom: 0;
+}
+
 .week__header {
   display: flex;
   justify-content: center;
@@ -330,11 +337,11 @@ body.week__2 {
 }
 
 .week__button {
-  background-image: linear-gradient(0deg, #ffd166 11%, #fef4dc 88%);
+  background-image: linear-gradient(0deg, #007c9b 11%, #01b0de 88%);
   border-radius: 0.1rem;
   border: 0.25rem solid #dda62c;
-  box-shadow: 0 2px 4px 0 rgba(2, 3, 5, 0.37);
-  color: #163150;
+  box-shadow: 0 2px 6px 0 rgba(2, 3, 5, 0.37);
+  color: white;
   display: block;
   font-size: $font-size-xs;
   padding: 0.9rem 0.5rem;
@@ -342,11 +349,12 @@ body.week__2 {
 }
 
 .week__button:hover {
-  background-image: linear-gradient(0deg, #057a97 11%, #00aed9 88%);
-  box-shadow: 0 2px 4px 0 rgba(2, 3, 5, 0.37);
-  color: white;
+  background-image: linear-gradient(0deg, #00a3cc 11%, #16cffe 88%);
+  box-shadow: 0 2px 2px 0 rgba(2, 3, 5, 0.17);
+  border-color: #e4b858;
   transition: all ease 100ms;
   text-decoration: none;
+  color: white;
 }
 
 .modal {
@@ -377,6 +385,27 @@ body.week__2 {
   }
   &[data-state='selected'] {
     display: block;
+  }
+  @include bp(screen-sm) {
+    right: -32vw;
+    width: 32vw;
+    bottom: 0;
+    margin: 0;
+    right: 0;
+    position: fixed;
+  }
+}
+
+.guide__3 {
+  width: 16vw;
+  height: auto;
+  overflow: hidden;
+  pointer-events: none;
+  right: 10vw;
+  position: fixed;
+  bottom: 0;
+  img {
+    margin-bottom: -5vh;
   }
   @include bp(screen-sm) {
     right: -32vw;

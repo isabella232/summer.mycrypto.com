@@ -90,3 +90,21 @@
 .modal__button-icon {
   margin-right: $space-xs;
 }
+.modal__alt-cta {
+  display: none;
+  background: $blue;
+  box-shadow: 0 2px 4px 0 rgba(2, 3, 5, 0.37);
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: $space-sm;
+  padding: $space-xs $space;
+  transition: all ease 100ms;
+  white-space: nowrap;
+  &:hover {
+    text-decoration: none;
+    color: white;
+    transform: scale(1.03);
+    transition: all ease 100ms;
+  }
+}
