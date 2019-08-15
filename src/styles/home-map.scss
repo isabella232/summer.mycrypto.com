@@ -106,6 +106,7 @@
   }
   @include bp(screen-sm) {
     width: 26vw;
+    margin-bottom: 3vh;
   }
 }
 
@@ -124,6 +125,7 @@
     height: auto;
     @include bp(screen-sm) {
       width: 50vw;
+      margin-bottom: 3vh;
     }
   }
   &.map__week-button--1-available {

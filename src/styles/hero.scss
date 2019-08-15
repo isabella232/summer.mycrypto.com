@@ -167,7 +167,6 @@ body.home {
     position: absolute;
     right: 12vw;
     left: unset;
-    top: unset;
   }
 }
 
@@ -254,14 +253,13 @@ body.home {
   height: auto;
   @include bp(screen-sm-min) {
     width: 22vw;
-
     position: absolute;
-    right: 2vw;
-    top: -2vw;
+    right: 0vw;
+    top: -7vh;
   }
   @include bp(screen-sm) {
-    width: 58vw;
-    top: 3vh;
+    width: 62vw;
+    top: 0;
   }
 }
 

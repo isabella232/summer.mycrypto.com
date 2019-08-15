@@ -22,8 +22,6 @@ const abWeek1Complete        = document.getElementsByClassName('ab__week1-comple
 const abWeek2Complete        = document.getElementsByClassName('ab__week2-complete')[0]
 const abWeek3Complete        = document.getElementsByClassName('ab__week3-complete')[0]
 const abWeek4Complete        = document.getElementsByClassName('ab__week4-complete')[0]
-
-
 const abmArrow               = document.getElementsByClassName('abm__btn-arrow')[0]
 const abmBase                = document.getElementsByClassName('abm__btn-base')[0]
 const abmComplete            = document.getElementsByClassName('abm__btn-complete')[0]
@@ -33,8 +31,6 @@ const abmWeek1Complete       = document.getElementsByClassName('abm__week1-compl
 const abmWeek2Complete       = document.getElementsByClassName('abm__week2-complete')[0]
 const abmWeek3Complete       = document.getElementsByClassName('abm__week3-complete')[0]
 const abmWeek4Complete       = document.getElementsByClassName('abm__week4-complete')[0]
-
-
 const characterChoiceBtn     = document.getElementsByClassName('character-choice__button')[0]
 const characterWrapper       = document.getElementsByClassName('character__wrapper')[0]
 const mapHighlight1          = document.getElementsByClassName('m__hover-1')[0]
@@ -68,7 +64,6 @@ const allWeekButtons        = document.querySelectorAll( '.week__button')
 const allWeekDots           = document.querySelectorAll('.week__dot')
 const allWeekItems          = document.querySelectorAll('.week__item')
 const allWeekSteps          = document.querySelectorAll('[data-weekstep]')
-
 const allMapContents        = document.getElementsByClassName('map__inner')
 const allMapHighlights      = document.getElementsByClassName('m__hover')
 const allMMHighlights      = document.getElementsByClassName('mm__hover')
@@ -438,6 +433,15 @@ function selectWeekStep(num) {
         nextWeekBtn.style.opacity = 0
     }
 
+    if (document.body.classList.contains('week__3')) {
+      let week3Image = require('./assets/week__bg--3-'+num+'.svg')
+      document.querySelectorAll('.week__3')[0].style.backgroundImage = "url('"+ week3Image +"')";
+      document.querySelectorAll('.character__wrapper')[0].classList.remove('step--1')
+      document.querySelectorAll('.character__wrapper')[0].classList.remove('step--2')
+      document.querySelectorAll('.character__wrapper')[0].classList.remove('step--3')
+      document.querySelectorAll('.character__wrapper')[0].classList.add('step--'+num)
+    }
+
     _paq.push([ 'trackEvent', 'Week: Selected Step', num ]);
 
 }
@@ -477,6 +481,9 @@ function showSuccessModal(weekNum, itemNum, successURL) {
         "item21"        : require('./assets/item__2-1.svg'),
         "item22"        : require('./assets/item__2-2.svg'),
         "item23"        : require('./assets/item__2-3.svg'),
+        "item31"        : require('./assets/item__3-1.svg'),
+        "item32"        : require('./assets/item__3-2.svg'),
+        "item33"        : require('./assets/item__3-3.svg'),
         "itembraveflag" : require('./assets/item__brave-flag.svg')
     }
     let itemClass = 'item__' + weekNum + '-' + itemNum
@@ -518,6 +525,21 @@ function showSuccessModal(weekNum, itemNum, successURL) {
         case 'item__2-3':
             modalText.innerHTML = 'You received the <strong>Spicy Cocktail</strong> for checking out some sweet, sweet <strong>hardware wallets</strong>!'
             modalButton.href = 'https://twitter.com/intent/tweet?text=This%20%E2%80%9CSpicy%20Cocktail%E2%80%9D%20will%20help%20me%20defeat%20the%20kraken%20that%20I%E2%80%99ve%20discovered%20on%20%23MyCryptoSummer!%20%0A%0AContinue%20your%20adventure%20and%20win%20prizes%20at%20https%3A%2F%2Fsummer.mycrypto.com%20%40MyCrypto'
+            _paq.push([ 'trackEvent', 'Item: Saw Modal', weekNum + '-' + itemNum ]);
+            break;
+        case 'item__3-1':
+            modalText.innerHTML = 'You received the <strong>Pirate Jacket</strong> for donating to <strong>Give Crypto</strong>!'
+            modalButton.href = 'https://twitter.com/intent/tweet?text=I%E2%80%99ve%20received%20the%20Pirate%20Jacket%20reward%20for%20choosing%20to%20%40GiveCrypto%20during%20%23MyCryptoSummer!%0A%0A%0APlay%20now%20and%20win%20prizes%20at%20https%3A%2F%2Fsummer.mycrypto.com!%20%40MyCrypto'
+            _paq.push([ 'trackEvent', 'Item: Saw Modal', weekNum + '-' + itemNum ]);
+            break;
+        case 'item__3-2':
+            modalText.innerHTML = 'You received the <strong>Scuba Suit</strong> for earning some passive income via <strong>Compound</strong>!'
+            modalButton.href = 'https://twitter.com/intent/tweet?text=I%20obtained%20the%20Scuba%20Suit%20for%20choosing%20to%20gain%20interest%20at%20%40compoundfinance%20during%20%23MyCryptoSummer!%0A%0A%0APlay%20now%20and%20win%20prizes%20at%20https%3A%2F%2Fsummer.mycrypto.com!%20%40MyCrypto'
+            _paq.push([ 'trackEvent', 'Item: Saw Modal', weekNum + '-' + itemNum ]);
+            break;
+        case 'item__3-3':
+            modalText.innerHTML = 'You received the <strong>Water Wings</strong> for grabbing a <strong>Gods Unchained card pack</strong>!'
+            modalButton.href = 'https://twitter.com/intent/tweet?text=I%20won%20the%20Water%20Wings%20for%20choosing%20to%20redeem%20a%20free%20%40GodsUnchained%20card%20pack%20during%20%23MyCryptoSummer!%0A%0A%0APlay%20now%20and%20win%20prizes%20at%20https%3A%2F%2Fsummer.mycrypto.com!%20%40MyCrypto'
             _paq.push([ 'trackEvent', 'Item: Saw Modal', weekNum + '-' + itemNum ]);
             break;
     }
