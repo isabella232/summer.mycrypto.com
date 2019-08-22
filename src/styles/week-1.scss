@@ -26,6 +26,13 @@ body.week__3 {
   padding-bottom: 0;
 }
 
+body.week__4 {
+  background-color: #047a97;
+  background-image: url('./../assets/week__bg--4-1.svg');
+  background-size: cover;
+  padding-bottom: 0;
+}
+
 .week__header {
   display: flex;
   justify-content: center;
@@ -586,4 +593,34 @@ body.week__3 {
 
 .week__3 .week__inner-wrapper {
   margin: 0 auto;
+}
+
+.week__4 .character__wrapper .character {
+  left: 0;
+  bottom: 0;
+  top: auto;
+  width: 25vw;
+  position: fixed;
+  @include bp(screen-sm) {
+    width: 57vw;
+    bottom: -6vh;
+  }
+}
+
+.week__4 .character__wrapper.step--3 .character {
+  left: auto;
+  right: 0;
+  bottom: 0;
+  top: auto;
+  width: 25vw;
+  position: fixed;
+  @include bp(screen-sm) {
+    width: 57vw;
+    bottom: -6vh;
+  }
+}
+
+.week__4 .character__wrapper.step--3 + .guide__3 {
+  left: 0;
+  right: auto;
 }

@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 /* TODO EACH WEEK: CHANGE TO NEXT NUMBER */
 const week2Available = true
 const week3Available = true
-const week4Available = false
+const week4Available = true
 
 let weekStep = 1
 
@@ -442,6 +442,15 @@ function selectWeekStep(num) {
       document.querySelectorAll('.character__wrapper')[0].classList.add('step--'+num)
     }
 
+    if (document.body.classList.contains('week__4')) {
+      let week4Image = require('./assets/week__bg--4-'+num+'.svg')
+      document.querySelectorAll('.week__4')[0].style.backgroundImage = "url('"+ week4Image +"')";
+      document.querySelectorAll('.character__wrapper')[0].classList.remove('step--1')
+      document.querySelectorAll('.character__wrapper')[0].classList.remove('step--2')
+      document.querySelectorAll('.character__wrapper')[0].classList.remove('step--3')
+      document.querySelectorAll('.character__wrapper')[0].classList.add('step--'+num)
+    }
+
     _paq.push([ 'trackEvent', 'Week: Selected Step', num ]);
 
 }
@@ -484,6 +493,9 @@ function showSuccessModal(weekNum, itemNum, successURL) {
         "item31"        : require('./assets/item__3-1.svg'),
         "item32"        : require('./assets/item__3-2.svg'),
         "item33"        : require('./assets/item__3-3.svg'),
+        "item41"        : require('./assets/item__4-1.svg'),
+        "item42"        : require('./assets/item__4-2.svg'),
+        "item43"        : require('./assets/item__4-3.svg'),
         "itembraveflag" : require('./assets/item__brave-flag.svg')
     }
     let itemClass = 'item__' + weekNum + '-' + itemNum
@@ -540,6 +552,21 @@ function showSuccessModal(weekNum, itemNum, successURL) {
         case 'item__3-3':
             modalText.innerHTML = 'You received the <strong>Water Wings</strong> for grabbing a <strong>Gods Unchained card pack</strong>!'
             modalButton.href = 'https://twitter.com/intent/tweet?text=I%20won%20the%20Water%20Wings%20for%20choosing%20to%20redeem%20a%20free%20%40GodsUnchained%20card%20pack%20during%20%23MyCryptoSummer!%0A%0A%0APlay%20now%20and%20win%20prizes%20at%20https%3A%2F%2Fsummer.mycrypto.com!%20%40MyCrypto'
+            _paq.push([ 'trackEvent', 'Item: Saw Modal', weekNum + '-' + itemNum ]);
+            break;
+        case 'item__4-1':
+            modalText.innerHTML = 'You received the <strong>Parrot</strong> for learning some crypto-code with <strong>CryptoZombies</strong>!'
+            modalButton.href = 'https://twitter.com/intent/tweet?text=I%20now%20have%20a%20Parrot%20companion%20for%20starting%20%40loomnetwork%E2%80%99s%20CryptoZombies%20program%20for%20%23MyCryptoSummer!%0A%0A%0AFinish%20your%20adventure%20and%20win%20prizes%20at%20https%3A%2F%2Fsummer.mycrypto.com!%20%40MyCrypto'
+            _paq.push([ 'trackEvent', 'Item: Saw Modal', weekNum + '-' + itemNum ]);
+            break;
+        case 'item__4-2':
+            modalText.innerHTML = 'You received the <strong>Dragonling</strong> for planning to attend a <strong>Crypto Meetup</strong>!'
+            modalButton.href = 'https://twitter.com/intent/tweet?text=I%20now%20have%20a%20Dragonling%20companion%20for%20joining%20a%20local%20crypto%20meetup%20during%20%23MyCryptoSummer!%0A%0A%0AFinish%20your%20adventure%20and%20win%20prizes%20at%20https%3A%2F%2Fsummer.mycrypto.com!%20%40MyCrypto'
+            _paq.push([ 'trackEvent', 'Item: Saw Modal', weekNum + '-' + itemNum ]);
+            break;
+        case 'item__4-3':
+            modalText.innerHTML = 'You received the <strong>Dragonling</strong> for joining a <strong>MIT Blockchain Class</strong>!'
+            modalButton.href = 'https://twitter.com/intent/tweet?text=I%20won%20the%20Anglerfish%20companion%20for%20taking%20an%20MIT%20Blockchain%20course%20during%20%23MyCryptoSummer!%0A%0A%0AFinish%20your%20adventure%20and%20win%20prizes%20at%20https%3A%2F%2Fsummer.mycrypto.com!%20%40MyCrypto'
             _paq.push([ 'trackEvent', 'Item: Saw Modal', weekNum + '-' + itemNum ]);
             break;
     }

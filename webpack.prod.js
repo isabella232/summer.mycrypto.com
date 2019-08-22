@@ -106,6 +106,11 @@ module.exports = {
             template: './src/html/week-3.html',
             inject: 'body',
         }),
+        new HtmlWebpackPlugin({
+            filename: './week-4.html',
+            template: './src/html/week-4.html',
+            inject: 'body',
+        }),
         new HtmlWebpackInlineSVGPlugin({
             runPreEmit: true,
         }),
